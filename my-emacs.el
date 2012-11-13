@@ -10,6 +10,7 @@
 	 ;(set-face-font 'default "NanumGothicCoding-14") 
 	 ; mac에서 command 를 meta로 사용
 	 (setq ns-command-modifier 'meta))
+
 	)
   ;;windows
   (cond ((eq type 'emacs-window)
