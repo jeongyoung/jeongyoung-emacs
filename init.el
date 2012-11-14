@@ -32,20 +32,3 @@
 ;(load-library "my-org")			; org-mode
 ;(load-library "my-jde")			; jde-mode
 
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.32")
- '(ecb-wget-setup (quote cons))
- '(jde-global-classpath (quote ("/System/Library/Frameworks/JavaVM.framework/Classes/" ".")))
- '(jde-jdk-registry (quote (("1.6.0" . "/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0"))))
- '(org-agenda-files (quote ("/Users/scott/org/newgtd.org"))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
