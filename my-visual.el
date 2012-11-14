@@ -1,7 +1,7 @@
 
 ;;inhibit the startup screen
 (setq inhibit-startup-message t)
-(setq default-truncate-lines t)
+(setq default-truncate-lines nil)
 
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 (if (functionp 'scroll-bar-mode) (scroll-bar-mode 0))
@@ -12,6 +12,9 @@
 
 (if window-system
 	(set-face-font 'default "NanumGothicCoding-14"))
+
+(set-fontset-font "fontset-default" 'kana '("AppleGothic" . "unicode-bmp"))
+(set-fontset-font "fontset-default" 'han '("AppleGothic" . "unicode-bmp"))
 	
 
 

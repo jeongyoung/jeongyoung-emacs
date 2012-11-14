@@ -38,3 +38,4 @@
 (load-library "my-private")			; password
 (load-library "my-maxframe")			; maxframe
 (load-library "my-wordpress")			; org2blog for wordpress
+(load-library "my-markdown")			; markdown-mode
