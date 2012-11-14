@@ -1,0 +1,8 @@
+#/bin/sh
+
+## Run Emacs.app emacsclient in terminal
+
+# -t : Display file in terminal window
+
+
+exec /Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t -a "" $*

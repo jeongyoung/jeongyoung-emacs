@@ -1,0 +1,5 @@
+#/bin/sh
+
+## Run Emacs.app
+
+exec /Applications/Emacs.app/Contents/MacOS/Emacs $*
