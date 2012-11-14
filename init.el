@@ -10,25 +10,30 @@
 ;(add-to-list 'load-path my-root-dir)
 (add-to-list 'load-path (concat my-root-dir "/auto-install"))
 (add-to-list 'load-path (concat my-root-dir "/vendor"))
+(add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
+(add-to-list 'load-path (concat my-root-dir "/vendor/org-toodledo"))
+
 
 
 
 ;; Customization
 
-(load-library "my-emacs")      ;emacs system configuration
+(load-library "my-system")      ;emacs system configuration
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
 ;(load-library "my-cedet")		; cedet setting
 ;(load-library "my-ecb")			; ecb setting
 ;(load-library "my-python")		; python-mode,ipython,pylookup settings
-;(load-library "my-ido")			; ido setting
+(load-library "my-ido")			; ido setting
 ;(load-library "my-pymacs")		; pymacs
 ;(load-library "my-ropemacs")		; ropemacs
-;(load-library "my-yasnippet")		; yasnippet setting
+(load-library "my-yasnippet")		; yasnippet setting
 ;(load-library "my-autoinstall")		; auto-install
 ;(load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
 ;(load-library "my-jde")			; jde-mode
+(load-library "my-password")			; password
+(load-library "my-maxframe")			; maxframe
 

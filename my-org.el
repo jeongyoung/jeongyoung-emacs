@@ -15,11 +15,11 @@
 ;; 			     "~/org/emacs.org"
 ;; 			     "~/org/OrgTutorial.org"))
 
-(setq org-agenda-directory "~/org/")
+(setq org-agenda-directory "~/CloudStation/Org")
 (setq org-agenda-files
       (directory-files (expand-file-name org-agenda-directory) t "^.*\\.org$"))
 
-(setq org-mobile-directory "/Volumes/jeongyoung/org/")
+(setq org-mobile-directory "~/CloudStation/MobileOrg")
 
 
 ;(setq org-refile-targets (quote (("newgtd.org" :maxlevel . 1) ("someday.org" :level . 2))))
@@ -80,3 +80,27 @@
 (custom-set-variables
  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
 )
+
+;; org-toodledo
+
+;; set this variables in ~/.emacs.private/...
+;; (setq org-toodledo-userid "")    
+;; (setq org-toodledo-password "")
+
+
+(require 'org-toodledo)
+
+;; Useful key bindings for org-mode
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-unset-key "\C-o")
+            (local-set-key "\C-od" 'org-toodledo-mark-task-deleted)
+            (local-set-key "\C-os" 'org-toodledo-sync)
+            )
+          )
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (local-unset-key "\C-o")
+            (local-set-key "\C-od" 'org-toodledo-agenda-mark-task-deleted)
+            )
+	  )	

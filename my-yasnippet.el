@@ -1,5 +1,8 @@
 (add-to-list 'load-path
-	     "~/.emacs.d/plugins/yasnippet-0.6.1c")
+	     "~/.emacs.d/vendor/yasnippet")
 (require 'yasnippet)			; not yasnippet-bundle
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
+;(yas/initialize)
+(yas/global-mode 1)
+;(yas/load-directory "~/.emacs.d/vendor/yasnippet/snippets")
+
+(setq yas/snippet-dirs '("~/.emacs.d/vendor/yasnippet/snippets" "~/.emacs.d/snippets"))
