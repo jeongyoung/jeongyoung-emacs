@@ -11,8 +11,9 @@
 (add-to-list 'load-path (concat my-root-dir "/auto-install"))
 (add-to-list 'load-path (concat my-root-dir "/vendor"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
+(add-to-list 'load-path (concat my-root-dir "/vendor/orgmode/lisp"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/org-toodledo"))
-
+(add-to-list 'load-path (concat my-root-dir "/vendor/org2blog"))
 
 
 
@@ -34,6 +35,6 @@
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
 ;(load-library "my-jde")			; jde-mode
-(load-library "my-password")			; password
+(load-library "my-private")			; password
 (load-library "my-maxframe")			; maxframe
-
+(load-library "my-wordpress")			; org2blog for wordpress

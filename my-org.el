@@ -4,6 +4,7 @@
 ;; install from macport 
 
 (require 'org)
+
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -15,7 +16,7 @@
 ;; 			     "~/org/emacs.org"
 ;; 			     "~/org/OrgTutorial.org"))
 
-(setq org-agenda-directory "~/CloudStation/Org")
+(setq org-agenda-directory "~/org")
 (setq org-agenda-files
       (directory-files (expand-file-name org-agenda-directory) t "^.*\\.org$"))
 
@@ -104,3 +105,4 @@
             (local-set-key "\C-od" 'org-toodledo-agenda-mark-task-deleted)
             )
 	  )	
+
