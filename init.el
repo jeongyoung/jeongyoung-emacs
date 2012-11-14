@@ -29,6 +29,6 @@
 ;(load-library "my-autoinstall")		; auto-install
 ;(load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
-;(load-library "my-org")			; org-mode
+(load-library "my-org")			; org-mode
 ;(load-library "my-jde")			; jde-mode
 
