@@ -1,4 +1,4 @@
-(setq my-root-dir "~/.jeongyoung-emacs")
+(setq my-root-dir "~/.emacs.d")
 ;; 명시적으로 선언하지 않을 경우, emacs-app에서 로딩이 안됨
 (setq load-path (cons (expand-file-name my-root-dir) load-path))
 
