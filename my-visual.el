@@ -3,6 +3,7 @@
 (setq inhibit-startup-message t)
 
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
+(if (functionp 'scroll-bar-mode) (scroll-bar-mode 0))
 
 ;; set font
 ;(if window-system
