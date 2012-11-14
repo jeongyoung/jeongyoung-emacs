@@ -6,9 +6,10 @@
 
 
 ; (set-cursor-color 'red)
-(setq default-frame-alist
-	  ' ((cursor-color . "red") (cursor-type . box)))
-	  
+; (set-cursor-color 'red)                                                       
+(setq default-frame-alist                                                       
+          ' ((cursor-color . "red") (cursor-type . box) (width . 60) (height . 55)))  
+
 ;; 모드 라인에 Display time mode 활성화
 (display-time-mode t)
 (setq display-time-day-and-date t)

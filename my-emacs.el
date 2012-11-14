@@ -7,7 +7,7 @@
 (let ((type (emacs-type)))
   ;;mac
   (cond ((eq type 'emacs-mac-window)
-	 ;(set-face-font 'default "NanumGothicCoding-14") 
+	 (set-face-font 'default "NanumGothicCoding-14") 
 	 ; mac에서 command 를 meta로 사용
 	 (setq ns-command-modifier 'meta))
 
