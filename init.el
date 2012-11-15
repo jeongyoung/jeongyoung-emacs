@@ -23,7 +23,7 @@
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
-;(load-library "my-cedet")		; cedet setting
+(load-library "my-cedet")		; cedet setting
 ;(load-library "my-ecb")			; ecb setting
 ;(load-library "my-python")		; python-mode,ipython,pylookup settings
 (load-library "my-ido")			; ido setting
@@ -31,7 +31,7 @@
 ;(load-library "my-ropemacs")		; ropemacs
 (load-library "my-yasnippet")		; yasnippet setting
 ;(load-library "my-autoinstall")		; auto-install
-;(load-library "my-autocomplete")	; auto-complete
+(load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
 ;(load-library "my-jde")			; jde-mode
@@ -39,3 +39,5 @@
 (load-library "my-maxframe")			; maxframe
 (load-library "my-wordpress")			; org2blog for wordpress
 (load-library "my-markdown")			; markdown-mode
+;(load-library "my-objc")			; objc-mode
+(load-library "my-cprog")		;c-mode
