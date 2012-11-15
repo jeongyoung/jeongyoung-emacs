@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002, 2003, 2004, 2007, 2012 Richard Kim
 
-;; Author: Eric M. Ludlam <eric@siege-engine.com>
-;; Created: 2012-02-11 09:18:41-0500
+;; Author: 허정영 <jeongyoung@Scott-MacBook-Pro.local>
+;; Created: 2012-11-16 01:45:33+0900
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
