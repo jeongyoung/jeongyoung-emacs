@@ -2,8 +2,6 @@
 (setq inhibit-startup-message t)
 (setq truncate-lines nil)
 
-(if (functionp 'tool-bar-mode) (tool-bar-mode 0))
-(if (functionp 'scroll-bar-mode) (scroll-bar-mode 0))
 
 ;; color-theme
 
@@ -21,9 +19,13 @@
 (setq default-frame-alist 
       '((width . 60) (height . 55) 
 	(font . "NanumGothicCoding-14") 
-;	(cursor-color . "red")
-;	(cursor-type . "box")
-	(menu-bar-lines . 1)))
+	(scroll-bar-mode . 0)
+	(cursor-color . "red")
+	(cursor-type . "box")
+	(menu-bar-lines . 0)))
+
+(if (functionp 'tool-bar-mode) (tool-bar-mode -1))
+(if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 
 (if window-system (set-face-font 'default "NanumGothicCoding-14"))
