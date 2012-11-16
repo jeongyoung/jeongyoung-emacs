@@ -7,9 +7,9 @@
 
 (require 'color-theme)
 (color-theme-initialize)
-;(color-theme-deep-blue)
+(color-theme-deep-blue)
 ;(color-theme-midnight)
-(color-theme-dark-blue2)
+;(color-theme-dark-blue2)
 
 ;; set font
 ;(if window-system

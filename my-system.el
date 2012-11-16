@@ -18,6 +18,9 @@
 ;; 	)
 ;; )
 
+
+(setq default-directory "~/" )
+
 (setq exec-path (append exec-path '("/usr/local/bin")) )
 
 (when (equal system-type 'darwin)
