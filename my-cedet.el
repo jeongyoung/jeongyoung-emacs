@@ -1,7 +1,6 @@
 ;;
 ;; CEDET
 ;; 
-
 (load-file (concat my-root-dir "/vendor/cedet/common/cedet.el"))
 
 (global-ede-mode 1)

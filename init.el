@@ -16,7 +16,6 @@
 (add-to-list 'load-path (concat my-root-dir "/vendor/org2blog"))
 
 
-
 ;; Customization
 
 (load-library "my-system")      ;emacs system configuration
@@ -25,7 +24,7 @@
 (load-library "my-misc")		; miscellaneous setting
 (load-library "my-cedet")		; cedet setting
 ;(load-library "my-ecb")			; ecb setting
-;(load-library "my-python")		; python-mode,ipython,pylookup settings
+(load-library "my-python")		; python-mode, ipython,pylookup settings
 (load-library "my-ido")			; ido setting
 ;(load-library "my-pymacs")		; pymacs
 ;(load-library "my-ropemacs")		; ropemacs
