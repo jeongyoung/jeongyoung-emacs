@@ -21,6 +21,9 @@
 
 (setq default-directory "~/" )
 
+;; 프레임 전환을 메타키와 방향키로 가능하도록
+(windmove-default-keybindings 'meta)
+
 (setq exec-path (append exec-path '("/usr/local/bin")) )
 
 (when (equal system-type 'darwin)
