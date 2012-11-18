@@ -11,13 +11,13 @@
 
 
 (setq default-frame-alist 
-      '((width . 60) (height . 55) 
+      '((width . 50) (height . 55) 
 ;	(font . "-apple-NanumGothicCoding-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 ;	(font . "AppleGothic-14")
 ;	(font . "NanumGothicCoding-14")
 ;	(font . "MalgunGothic-14")
 ;	(font . "-apple-Malgun_Gothic-medium-normal-normal-*-*-*-*-*-p-0-iso10646-1")
-	(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+	(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
 	(scroll-bar-mode . 0)
 	(cursor-color . "red")
 	(cursor-type . "box")
