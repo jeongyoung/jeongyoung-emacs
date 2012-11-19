@@ -25,7 +25,8 @@
 (load-library "my-cedet")		; cedet setting
 ;(load-library "my-ecb")			; ecb setting
 (load-library "my-python")		; python-mode, ipython,pylookup settings
-(load-library "my-ido")			; ido setting
+;; ido completion 모드에서 한글파일생성이 안됨
+;(load-library "my-ido")			; ido setting
 ;(load-library "my-pymacs")		; pymacs
 ;(load-library "my-ropemacs")		; ropemacs
 (load-library "my-yasnippet")		; yasnippet setting
