@@ -40,4 +40,7 @@
 (load-library "my-wordpress")			; org2blog for wordpress
 (load-library "my-markdown")			; markdown-mode
 ;(load-library "my-objc")			; objc-mode
-(load-library "my-cprog")		;c-mode
+(load-library "my-cprog")		; c-mode
+;(load-library "my-mail")		; email setting
+(load-library "my-dayone")		; dayone-mode
+(load-library "my-git")			; egg for git
