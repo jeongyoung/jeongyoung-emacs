@@ -1,5 +1,33 @@
-Jeongyoung's emacs configuration setting files
+# Jeongyoung's emacs configuration setting files on mac os x
+
+## Checkout
 
 git clone https://github.com/jeonyoung/jeongyoung-emacs.git .jeongyoung-emacs
 
-ln -s .jeongyoung-emacs .emacs.d
+## Symbolic link
+
+ln -s jeongyoung-emacs .emacs.d
+
+## Private Directory
+make directory for private directory '.emacs.private'
+
+- wp-list.el : wordpress account list
+- real-passwords.el : password file
+
+## Font
+
+- intall BitstreamVeraSansMono.ttf (/jeongyoung-emacs/bin)
+
+## Emacs Daemon 
+
+이맥스 로딩시 시간이 너무 오래걸림
+
+- bin 위치의 EmacsClient와 EmacsDaemon를 Application 디렉토리로 복사 
+- bin 위치의 profile 파일을 ~/.profile 로 내용 복사
+	- em : execute emacs 
+	- et : execute emacs terminal
+	- ek : kill emacs daemon
+	
+	
+
+
