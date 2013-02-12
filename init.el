@@ -18,7 +18,8 @@
 
 ;; Customization
 
-(load-library "my-system")      ;emacs system configuration
+(load-library "my-bindings")		;emacs keyboard shortcuts
+(load-library "my-system")		;emacs system configuration
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
@@ -44,3 +45,5 @@
 ;(load-library "my-mail")		; email setting
 (load-library "my-dayone")		; dayone-mode
 (load-library "my-git")			; egg for git
+(load-library "my-lua")			; lua-mode
+

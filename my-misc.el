@@ -22,3 +22,8 @@
 (define-key global-map [(control c)(control v)(d)] 'insert-personal-time-stamp)
 
 
+;; ====================
+;; tab width
+;; ====================
+
+(setq default-tab-width 2)
