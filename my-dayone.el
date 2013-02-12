@@ -35,3 +35,8 @@
   (interactive)
   (if (equal dayone-buffer (buffer-name))
       (kill-buffer (current-buffer))))
+
+
+;; (load-file (concat my-root-dir "/vendor/dayone-journal.el"))
+;; (require 'dayone-journal)
+
