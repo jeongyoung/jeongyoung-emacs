@@ -46,4 +46,5 @@
 (load-library "my-dayone")		; dayone-mode
 (load-library "my-git")			; egg for git
 (load-library "my-lua")			; lua-mode
+(load-library "my-html")		; html mode
 

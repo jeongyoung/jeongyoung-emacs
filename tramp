@@ -84,4 +84,8 @@
   ("remote-encoding" "base64")
   ("remote-decoding" "base64 -d -i")
   ("inline-compress" "gzip")
-  ("inline-decompress" "gzip -d")))
+  ("inline-decompress" "gzip -d"))
+ (["scpc" nil "ssh" nil]
+  nil)
+ (["scpc" "shinhan" "192.168.10.4" nil]
+  nil))
