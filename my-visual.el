@@ -11,7 +11,7 @@
 
 
 (setq default-frame-alist 
-      '((width . 50) (height . 55) 
+      '((width . 100) (height . 55) 
 ;	(font . "-apple-NanumGothicCoding-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 ;	(font . "AppleGothic-14")
 ;	(font . "NanumGothicCoding-14")

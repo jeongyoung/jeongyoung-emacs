@@ -6,3 +6,6 @@ CVS
 *~
 *#
 bin/.DS_Store
+el-get/
+elpa/
+.DS_Store

@@ -1,1 +1,1 @@
-(setq auto-mode-alist (cons '("\\.asp$" . html-helper-mode)        auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.asp$" . html-mode)        auto-mode-alist))

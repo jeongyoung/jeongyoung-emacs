@@ -8,53 +8,57 @@
 ;; (setq interpreter-mode-alist (cons '("python" . python-mode) 
 ;; 				      interpreter-mode-alist))
 
+(require 'python-mode)
 (add-to-list 'auto-mode-alist '("\.py$" . python-mode))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
+; use IPython
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
+   
+   
+;(require 'ipython)
+;(setq ansi-color-for-comint-mode t)
+;(setenv "LC_CTYPE" "UTF-8")
+;(setq py-python-command-args '("--colors" "NoColor"))
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;;
-;; django
-;;
 
-;; (defun django-shell (&optional argprompt)
-;;   (interactive "P")
-;;   ;; Set the default shell if not already set
-;;   (labels ((read-django-project-dir 
-;;         (prompt dir)
-;;         (let* ((dir (read-directory-name prompt dir))
-;;                (manage (expand-file-name (concat dir "manage.py"))))
-;;           (if (file-exists-p manage)
-;;               (expand-file-name dir)
-;;             (progn
-;;               (message "%s is not a Django project directory" manage)
-;;               (sleep-for .5)
-;;               (read-django-project-dir prompt dir))))))
-;; (let* ((dir (read-django-project-dir 
-;;              "project directory: " 
-;;              default-directory))
-;;        (project-name (first 
-;;                       (remove-if (lambda (s) (or (string= "src" s) (string= "" s))) 
-;;                                  (reverse (split-string dir "/")))))
-;;        (buffer-name (format "django-%s" project-name))
-;;        (manage (concat dir "manage.py")))
-;;   (cd dir)
-;;   (if (not (equal (buffer-name) buffer-name))
-;;       (switch-to-buffer-other-window
-;;        (apply 'make-comint buffer-name manage nil '("shell")))
-;;     (apply 'make-comint buffer-name manage nil '("shell")))
-;;   (make-local-variable 'comint-prompt-regexp)
-;;   (setq comint-prompt-regexp (concat py-shell-input-prompt-1-regexp "\\|"
-;;                                      py-shell-input-prompt-2-regexp "\\|"
-;;                                      "^([Pp]db) "))
-;;   (add-hook 'comint-output-filter-functions
-;;             'py-comint-output-filter-function)
-;;   ;; pdbtrack
+;; jedi 자동완성
+(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
 
-;;   (add-hook 'comint-output-filter-functions 'py-pdbtrack-track-stack-file)
-;;   (setq py-pdbtrack-do-tracking-p t)
-;;   (set-syntax-table py-mode-syntax-table)
-;;   (use-local-map py-shell-map)
-;;   (run-hooks 'py-shell-hook))))
 
-;; ;;django-mode
-;; (load "django-mode.el")
+	;; 도움말 문서
+(require 'info-look)
+	(info-lookup-add-help
+	 :mode 'python-mode
+	 :regexp "[[:alnum:]_]+"
+	 :doc-spec
+	 '(("(python)Index" nil "")))
+	 
+	 
+;(require 'virtualenv)
+
+
+;; https://github.com/porterjamesj/virtualenvwrapper.el
+;(require 'virtualenvwrapper)
+
+;(venv-initialize-interactive-shells) ;; if you want interactive shell support
+;(venv-initialize-eshell) ;; if you want eshell support
+;(setq venv-location "/Users/jeongyoung/.virtualenvs/")
+
+
+;; (defun insert-utf-8-encoding-string ()
+;; 	(interactive)
+;; 	(insert "# -*- coding: utf-8 -*-"))
+
+;; (define-key py-mode-map "\C-c8" 'insert-utf-8-encoding-string)
+
+;; (defun insert-python-beginning-string()
+;; 	(interactive)
+;; 	(insert "#!/usr/bin/env python"))
+
+;; (define-key py-mode-map "\C-c1" 'insert-python-beginning-string)

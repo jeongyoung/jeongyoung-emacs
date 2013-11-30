@@ -23,28 +23,48 @@
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
-(load-library "my-cedet")		; cedet setting
+(load-library "my-packages")	; emacs package management, el-get
+		
+;(load-library "my-cedet")		; cedet setting	
 ;(load-library "my-ecb")			; ecb setting
 (load-library "my-python")		; python-mode, ipython,pylookup settings
+(load-library "my-django")		; python-django
 ;; ido completion 모드에서 한글파일생성이 안됨
-;(load-library "my-ido")			; ido setting
+;; 24버전에서 에러발생
+(load-library "my-ido")			; ido setting
 ;(load-library "my-pymacs")		; pymacs
-;(load-library "my-ropemacs")		; ropemacs
+(load-library "my-ropemacs")		; ropemacs
 (load-library "my-yasnippet")		; yasnippet setting
 ;(load-library "my-autoinstall")		; auto-install
 (load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
 ;(load-library "my-jde")			; jde-mode
-(load-library "my-private")			; password
-(load-library "my-maxframe")			; maxframe
-(load-library "my-wordpress")			; org2blog for wordpress
+;(load-library "my-private")			; password
+;(load-library "my-maxframe")			; maxframe
+;(load-library "my-wordpress")			; org2blog for wordpress
 (load-library "my-markdown")			; markdown-mode
 ;(load-library "my-objc")			; objc-mode
-(load-library "my-cprog")		; c-mode
+;(load-library "my-cprog")		; c-mode
 ;(load-library "my-mail")		; email setting
-(load-library "my-dayone")		; dayone-mode
-(load-library "my-git")			; egg for git
-(load-library "my-lua")			; lua-mode
-(load-library "my-html")		; html mode
-
+;(load-library "my-dayone")		; dayone-mode
+;(load-library "my-git")			; egg for git
+;(load-library "my-lua")			; lua-mode
+;(load-library "my-html")		; html mode
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(org-hide ((((background dark)) (:foreground "darkslateg"))))
+ '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
+") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
+") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
