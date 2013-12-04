@@ -1,12 +1,16 @@
 
 (require 'package)
 ;;  패키지 저장소 Marmalade 추가
+;(add-to-list 'package-archives
+;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+						 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+												 
+
 ;; 설치된 패키지들 활성화
 (package-initialize)
 
-
+  
 ;; el-get
 ;; http://www.emacswiki.org/emacs/el-get
 

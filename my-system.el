@@ -1,4 +1,3 @@
-
 ;; (require 'emacs-type)
 
 ;; (setq make-backup-files nil)		;do not make backup files
@@ -50,7 +49,18 @@
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (push "/opt/local/bin" exec-path))
-	 
+
+
+
+(defun toggle-fullscreen ()
+	"Toggle full screen"
+	(interactive)
+	(set-frame-parameter
+	 nil 'fullscreen
+	 (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+
+
+(global-set-key [(meta return)] 'toggle-fullscreen)
 	
 	
 
