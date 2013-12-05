@@ -9,6 +9,10 @@
 ;(if window-system
 ;	(set-face-font 'default "-apple-NanumGothicCoding-medium-normal-normal-*-13-*-*-*-m-0-*-*"))
 
+(setq ansi-color-names-vector
+      ["black" "tomato" "PaleGreen2" "gold1"
+       "DeepSkyBlue1" "MediumOrchid1" "cyan" "white"])
+
 
 (setq default-frame-alist 
       '((width . 100) (height . 55) 
