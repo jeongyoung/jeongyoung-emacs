@@ -1,5 +1,10 @@
 
 (require 'package)
+
+; list the packages you want
+(setq package-list '(auto-complete ecb ggtags jedi magit pony-mode popup psvn yasnippet))
+
+
 ;;  패키지 저장소 Marmalade 추가
 ;(add-to-list 'package-archives
 ;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -9,6 +14,17 @@
 
 ;; 설치된 패키지들 활성화
 (package-initialize)
+
+
+; fetch the list of packages available 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (when (not (package-installed-p package))
+    (package-install package)))
+
 
   
 ;; el-get
@@ -69,14 +85,14 @@
 	 ;;
 	 ;; Note: el-get-install requires git, so we know we have at least that.
 	 ;;
-	 (when (el-get-executable-find "cvs")
-	   (add-to-list 'el-get-sources 'emacs-goodies-el)) ; the debian addons for emacs
+	 ;; (when (el-get-executable-find "cvs")
+	 ;;   (add-to-list 'el-get-sources 'emacs-goodies-el)) ; the debian addons for emacs
 
-	 (when (el-get-executable-find "svn")
-	   (loop for p in '(psvn    		; M-x svn-status
-	 		   yasnippet		; powerful snippet mode
-	 		   )
-	 	do (add-to-list 'el-get-sources p)))
+	 ;; (when (el-get-executable-find "svn")
+	 ;;   (loop for p in '(psvn    		; M-x svn-status
+	 ;; 		   yasnippet		; powerful snippet mode
+	 ;; 		   )
+	 ;; 	do (add-to-list 'el-get-sources p)))
 
 	 ;; install new packages and init already installed packages
 	 (el-get 'sync)
