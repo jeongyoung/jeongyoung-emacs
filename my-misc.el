@@ -10,6 +10,18 @@
 
 
 
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (highlight-parentheses-mode)
+             (setq autopair-handle-action-fns
+                   (list 'autopair-default-handle-action
+                         '(lambda (action pair pos-before)
+                            (hl-paren-color-update))))))
+
+
+
+													
+
 ;; ====================
 ;; insert date and time
 ;;

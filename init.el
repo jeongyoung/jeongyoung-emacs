@@ -29,7 +29,8 @@
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
-(load-library "my-packages")	; emacs package management, el-get
+(load-library "my-packages")	; emacs package management, 
+(load-library "my-elget")	; emacs el-get
 		
 (load-library "my-cedet")		; cedet setting	
 (load-library "my-ecb")			; ecb setting
@@ -75,7 +76,8 @@
  '(python-django-qmgmt-runserver-default-bindaddr "192.168.10.3:8000")
  '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
 ") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
-") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython")))))
+") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython"))))
+ '(weblogger-config-alist (quote (("wordpress" "http://jeongyoung.wordpress.com/xmlrpc.php" "jeongyoung" "" "31689190")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
