@@ -17,3 +17,5 @@ GTAGS
 /ac-comphist.dat
 tramp
 /tramp
+eshell/
+abbrev_defs

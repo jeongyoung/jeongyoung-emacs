@@ -17,6 +17,7 @@
 (add-to-list 'load-path (concat my-root-dir "/vendor/orgmode/lisp"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/org-toodledo"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/org2blog"))
+(add-to-list 'load-path (concat my-root-dir "/vender/jdee-2.4.1/lisp")) ;jde
 
 
 ;; Customization
@@ -47,7 +48,7 @@
 (load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
-;(load-library "my-jde")			; jde-mode
+(load-library "my-jde")			; jde-mode
 ;(load-library "my-private")			; password
 ;(load-library "my-maxframe")			; maxframe
 ;(load-library "my-wordpress")			; org2blog for wordpress
