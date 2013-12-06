@@ -5,12 +5,12 @@
 
 (defun eng-dict (query)
   (interactive (list (read-from-minibuffer "eng>han : " (concat (thing-at-point 'symbol) "") nil nil)))
-  (message (substring (shell-command-to-string (concat "~/bin/dict " query)) 0 -1))
+  (message (substring (shell-command-to-string (concat "~/.emacs.d/bin/dict " query)) 0 -1))
   )
  
 (defun search-eng-dict ()
   (interactive)
-  (message (substring (shell-command-to-string (concat "~/bin/dict " (concat (thing-at-point 'symbol) ""))) 0 -1))
+  (message (substring (shell-command-to-string (concat "~/.emacs.d/bin/dict " (concat (thing-at-point 'symbol) ""))) 0 -1))
   )
  
 (global-set-key [(f8)] 'search-eng-dict)
