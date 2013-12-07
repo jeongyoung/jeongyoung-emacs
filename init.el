@@ -24,13 +24,14 @@
 
 
 (load-library "my-reload-dotemacs")		;이맥스 설정파일 리로딩
+(load-library "my-packages")	; emacs package management, 
+(load-library "my-elget")	; emacs el-get
 (load-library "my-bindings")		;emacs keyboard shortcuts
 (load-library "my-system")		;emacs system configuration
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
-(load-library "my-packages")	; emacs package management, 
-(load-library "my-elget")	; emacs el-get
+
 		
 (load-library "my-cedet")		; cedet setting	
 (load-library "my-ecb")			; ecb setting
