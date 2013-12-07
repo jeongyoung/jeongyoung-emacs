@@ -14,7 +14,10 @@
 (add-to-list 'load-path (concat my-root-dir "/auto-install"))
 (add-to-list 'load-path (concat my-root-dir "/vendor"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
-(add-to-list 'load-path (concat my-root-dir "/vendor/orgmode/lisp"))
+;(add-to-list 'load-path (concat my-root-dir "/vendor/orgmode/lisp"))
+
+; 2013-12-07 comment because org-mode built in emacs24
+
 (add-to-list 'load-path (concat my-root-dir "/vendor/org-toodledo"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/org2blog"))
 (add-to-list 'load-path (concat my-root-dir "/vender/jdee-2.4.1/lisp")) ;jde
@@ -59,7 +62,7 @@
 ;(load-library "my-objc")			; objc-mode
 ;(load-library "my-cprog")		; c-mode
 ;(load-library "my-mail")		; email setting
-;(load-library "my-dayone")		; dayone-mode
+(load-library "my-dayone")		; dayone-mode
 ;(load-library "my-git")			; egg for git
 ;(load-library "my-lua")			; lua-mode
 (load-library "my-html")		; html mode

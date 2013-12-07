@@ -40,3 +40,4 @@
 ;; (load-file (concat my-root-dir "/vendor/dayone-journal.el"))
 ;; (require 'dayone-journal)
 
+;; 2013-12-07 comment because replace elpa package 

@@ -10,17 +10,17 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-;; (setq org-agenda-files (list "~/org/work.org"
-;; 			     "~/org/home.org"
-;; 			     "~/org/project.org"
-;; 			     "~/org/emacs.org"
-;; 			     "~/org/OrgTutorial.org"))
+;; (setq org-agenda-files (list "~/Dropbox/Org/work.org"
+;; 			     "~/Dropbox/Org/home.org"
+;; 			     "~/Dropbox/Org/project.org"
+;; 			     "~/Dropbox/Org/emacs.org"
+;; 			     "~/Dropbox/Org/OrgTutorial.org"))
 
-(setq org-agenda-directory "~/org")
+(setq org-agenda-directory "~/Dropbox/Org")
 (setq org-agenda-files
       (directory-files (expand-file-name org-agenda-directory) t "^.*\\.org$"))
 
-(setq org-mobile-directory "~/CloudStation/MobileOrg")
+(setq org-mobile-directory "~/Dropbox/MobileOrg")
 
 
 ;(setq org-refile-targets (quote (("newgtd.org" :maxlevel . 1) ("someday.org" :level . 2))))
@@ -38,13 +38,13 @@
 ;; remember-mode 
 ;;
 (org-remember-insinuate)
-(setq org-directory "~/org/")
+(setq org-directory "~/Dropbox/Org/")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (global-set-key "\C-cr" 'org-remember)
 
 (setq org-remember-templates
       '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U"
-	 "~/org/newgtd.org" "Tasks"))
+	 "~/Dropbox/Org/newgtd.org" "Tasks"))
 )
 
 ;; (setq org-agenda-custom-commands
@@ -75,7 +75,7 @@
 
 (defun gtd ()
   (interactive)
-  (find-file "~/org/newgtd.org"))
+  (find-file "~/Dropbox/Org/newgtd.org"))
 (global-set-key (kbd "C-c g") 'gtd)
 
 (custom-set-variables
