@@ -31,6 +31,7 @@
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
+(load-library "my-private")			; private configuration
 
 		
 (load-library "my-cedet")		; cedet setting	
@@ -51,7 +52,7 @@
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
 (load-library "my-jde")			; jde-mode
-;(load-library "my-private")			; password
+
 ;(load-library "my-maxframe")			; maxframe
 ;(load-library "my-wordpress")			; org2blog for wordpress
 (load-library "my-markdown")			; markdown-mode
@@ -63,6 +64,7 @@
 ;(load-library "my-lua")			; lua-mode
 (load-library "my-html")		; html mode
 (load-library "my-gtags")		; global tag mode
+(load-library "my-weblogger")		; weblogger
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -78,10 +80,11 @@
  '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
 ") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
 ") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython"))))
- '(weblogger-config-alist (quote (("wordpress" "http://jeongyoung.wordpress.com/xmlrpc.php" "jeongyoung" "" "31689190")))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'set-goal-column 'disabled nil)
