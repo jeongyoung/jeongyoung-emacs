@@ -8,7 +8,7 @@
 ;; (setq interpreter-mode-alist (cons '("python" . python-mode) 
 ;; 				      interpreter-mode-alist))
 
-(require 'python-mode)
+;(require 'python-mode)
 (add-to-list 'auto-mode-alist '("\.py$" . python-mode))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 

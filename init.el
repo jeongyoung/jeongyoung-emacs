@@ -79,7 +79,7 @@
  '(ecb-options-version "2.32")
  '(ecb-wget-setup (quote cons))
  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
- '(python-django-qmgmt-runserver-default-bindaddr "192.168.10.3:8000")
+ '(python-django-qmgmt-runserver-default-bindaddr "0.0.0.0:8000")
  '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
 ") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
 ") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython"))))
