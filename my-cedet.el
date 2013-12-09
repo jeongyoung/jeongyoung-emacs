@@ -3,7 +3,7 @@
 ;; 
 ;(load-file (concat my-root-dir "/vendor/cedet/common/cedet.el"))
 ;; package install elpa/ecb
-(load-file "~/temp/cedet/cedet-devel-load.el")
+(load-file "~/.emacs.d/vendor/cedet/cedet-devel-load.el")
 
 
 
