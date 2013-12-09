@@ -1,6 +1,6 @@
 
-;;;### (autoloads (bsh-script-help) "beanshell" "beanshell.el" (20899
-;;;;;;  44901))
+;;;### (autoloads (bsh-script-help) "beanshell" "beanshell.el" (21157
+;;;;;;  63921 0 0))
 ;;; Generated autoloads from beanshell.el
 
 (autoload 'bsh-script-help "beanshell" "\
@@ -10,8 +10,54 @@ Display BeanShell User's Guide.
 
 ;;;***
 
+;;;### (autoloads (jde-compile-jde jde-show-help jde-mode jde-build
+;;;;;;  jde-set-global-classpath jde-version) "jde" "jde.el" (21157
+;;;;;;  63922 0 0))
+;;; Generated autoloads from jde.el
+
+(defconst jde-version "2.4.1" "\
+JDE version number.")
+
+(autoload 'jde-version "jde" "\
+Get the version of JDEE.
+
+\(fn)" t nil)
+
+(autoload 'jde-set-global-classpath "jde" "\
+Set the value of `jde-global-classpath'.
+It specifies the -classpath argument for the Java compiler and
+interpreter.
+
+\(fn CLASSPATH)" t nil)
+
+(autoload 'jde-build "jde" "\
+Rebuild the entire project.
+This command invokes the function defined by `jde-build-function'.
+
+\(fn)" t nil)
+
+(autoload 'jde-mode "jde" "\
+Major mode for developing Java applications and applets.
+\\{jde-mode-map}
+
+\(fn)" t nil)
+
+(add-to-list 'auto-mode-alist '("\\.java\\'" . jde-mode))
+
+(autoload 'jde-show-help "jde" "\
+Displays the JDE User's Guide in a browser.
+
+\(fn)" t nil)
+
+(autoload 'jde-compile-jde "jde" "\
+Byte-compile all uncompiled files of jde.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (jde-ant-show-options jde-ant-projecthelp jde-ant-build)
-;;;;;;  "jde-ant" "jde-ant.el" (20899 44901))
+;;;;;;  "jde-ant" "jde-ant.el" (21157 63921 0 0))
 ;;; Generated autoloads from jde-ant.el
 
 (autoload 'jde-ant-build "jde-ant" "\
@@ -36,7 +82,7 @@ Show the JDE Ant Options panel.
 ;;;***
 
 ;;;### (autoloads (jde-bookmark-list jde-bookmark-add jde-bookmark-visit)
-;;;;;;  "jde-bookmark" "jde-bookmark.el" (20899 44901))
+;;;;;;  "jde-bookmark" "jde-bookmark.el" (21157 63921 0 0))
 ;;; Generated autoloads from jde-bookmark.el
 
 (autoload 'jde-bookmark-visit "jde-bookmark" "\
@@ -57,7 +103,7 @@ List bookmarks.
 ;;;***
 
 ;;;### (autoloads (jde-bsh-quote-expr jde-bsh-run jde-jeval) "jde-bsh"
-;;;;;;  "jde-bsh.el" (20899 44901))
+;;;;;;  "jde-bsh.el" (21157 63921 0 0))
 ;;; Generated autoloads from jde-bsh.el
 
 (autoload 'jde-jeval "jde-bsh" "\
@@ -97,8 +143,8 @@ NO-QUOTE-WRAP-P, if non-nil, don't add double quotes around the whole statement.
 
 ;;;***
 
-;;;### (autoloads (jde-bug-debug-app) "jde-bug" "jde-bug.el" (20899
-;;;;;;  44901))
+;;;### (autoloads (jde-bug-debug-app) "jde-bug" "jde-bug.el" (21157
+;;;;;;  63921 0 0))
 ;;; Generated autoloads from jde-bug.el
 
 (autoload 'jde-bug-debug-app "jde-bug" "\
@@ -109,7 +155,7 @@ Runs the debugger on the application in the current source buffer.
 ;;;***
 
 ;;;### (autoloads (jde-checkstyle jde-checkstyle-customize) "jde-checkstyle"
-;;;;;;  "jde-checkstyle.el" (20899 44901))
+;;;;;;  "jde-checkstyle.el" (21157 63921 0 0))
 ;;; Generated autoloads from jde-checkstyle.el
 
 (autoload 'jde-checkstyle-customize "jde-checkstyle" "\
@@ -130,7 +176,8 @@ history enabled.
 
 ;;;***
 
-;;;### (autoloads nil "jde-compat" "jde-compat.el" (20899 44901))
+;;;### (autoloads nil "jde-compat" "jde-compat.el" (21157 63921 0
+;;;;;;  0))
 ;;; Generated autoloads from jde-compat.el
 
 (defconst jde-xemacsp (string-match "XEmacs" (emacs-version)) "\
@@ -139,7 +186,7 @@ Non-nil if we are running in the XEmacs environment.")
 ;;;***
 
 ;;;### (autoloads (jde-compile jde-set-compile-options) "jde-compile"
-;;;;;;  "jde-compile.el" (20899 44901))
+;;;;;;  "jde-compile.el" (21157 63921 0 0))
 ;;; Generated autoloads from jde-compile.el
 
 (autoload 'jde-set-compile-options "jde-compile" "\
@@ -166,7 +213,7 @@ uses the compiler executable specified by
 ;;;***
 
 ;;;### (autoloads (jde-customize-option) "jde-custom" "jde-custom.el"
-;;;;;;  (20899 44901))
+;;;;;;  (21157 63922 0 0))
 ;;; Generated autoloads from jde-custom.el
 
 (defalias 'jde-customize-variable 'jde-customize-option)
@@ -180,7 +227,7 @@ Customize SYMBOL, which must be a JDEE option variable.
 
 ;;;### (autoloads (jde-debug-applet jde-debug jde-db-set-app-args
 ;;;;;;  jde-db-set-args jde-db-set-debugger) "jde-db" "jde-db.el"
-;;;;;;  (20899 44901))
+;;;;;;  (21157 63922 0 0))
 ;;; Generated autoloads from jde-db.el
 
 (autoload 'jde-db-set-debugger "jde-db" "\
@@ -228,7 +275,7 @@ file in the current buffer.
 ;;;***
 
 ;;;### (autoloads (jde-ejb-entity-bean-buffer jde-ejb-session-bean-buffer)
-;;;;;;  "jde-ejb" "jde-ejb.el" (20899 44901))
+;;;;;;  "jde-ejb" "jde-ejb.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-ejb.el
 
 (autoload 'jde-ejb-session-bean-buffer "jde-ejb" "\
@@ -257,7 +304,8 @@ to the EJB naming convention.
 ;;;;;;  jde-gen-equals-method-template jde-gen-equals-parens-around-expression
 ;;;;;;  jde-gen-equals-trailing-and-operators jde-gen-buffer jde-gen-jfc-app-buffer
 ;;;;;;  jde-gen-bean-buffer jde-gen-console-buffer jde-gen-interface-buffer
-;;;;;;  jde-gen-class-buffer) "jde-gen" "jde-gen.el" (20899 44901))
+;;;;;;  jde-gen-class-buffer) "jde-gen" "jde-gen.el" (21157 63922
+;;;;;;  0 0))
 ;;; Generated autoloads from jde-gen.el
 
 (autoload 'jde-gen-class-buffer "jde-gen" "\
@@ -439,7 +487,7 @@ It then moves the point to the location of the first method.
 ;;;***
 
 ;;;### (autoloads (jde-help-browse-jdk-doc jde-help-beanshell) "jde-help"
-;;;;;;  "jde-help.el" (20899 44901))
+;;;;;;  "jde-help.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-help.el
 
 (autoload 'jde-help-beanshell "jde-help" "\
@@ -455,7 +503,7 @@ Displays the JDK doc in a web browser.
 ;;;***
 
 ;;;### (autoloads (jde-import-at-point jde-import-organize) "jde-import"
-;;;;;;  "jde-import.el" (20899 44901))
+;;;;;;  "jde-import.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-import.el
 
 (autoload 'jde-import-organize "jde-import" "\
@@ -488,7 +536,7 @@ The fully qualified class is received from user input.
 ;;;***
 
 ;;;### (autoloads (jde-java-font-lock-setup-keywords) "jde-java-font-lock"
-;;;;;;  "jde-java-font-lock.el" (20899 44901))
+;;;;;;  "jde-java-font-lock.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-java-font-lock.el
 
 (autoload 'jde-java-font-lock-setup-keywords "jde-java-font-lock" "\
@@ -501,7 +549,8 @@ expressions.
 ;;;***
 
 ;;;### (autoloads (jde-java-properties-validate jde-java-properties-mode)
-;;;;;;  "jde-java-properties" "jde-java-properties.el" (20899 44901))
+;;;;;;  "jde-java-properties" "jde-java-properties.el" (21157 63922
+;;;;;;  0 0))
 ;;; Generated autoloads from jde-java-properties.el
 
 (autoload 'jde-java-properties-mode "jde-java-properties" "\
@@ -520,8 +569,185 @@ found.
 
 ;;;***
 
+;;;### (autoloads (jde-javadoc-enable-menu-p jde-javadoc-remove jde-javadoc-checkdoc
+;;;;;;  jde-javadoc-checkdoc-at-line jde-javadoc-remdoc-at-line jde-javadoc-autodoc-at-line
+;;;;;;  jde-javadoc-customize jde-javadoc-checker-quit jde-javadoc-checker-fix
+;;;;;;  jde-javadoc-checker-next jde-javadoc-checker-previous) "jde-javadoc"
+;;;;;;  "jde-javadoc.el" (21157 63922 0 0))
+;;; Generated autoloads from jde-javadoc.el
+
+(autoload 'jde-javadoc-checker-previous "jde-javadoc" "\
+Go to the previous tag with doc errors.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-checker-next "jde-javadoc" "\
+Goto the next tag with doc errors.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-checker-fix "jde-javadoc" "\
+Fix documentation of checked tag.
+Used in `jde-javadoc-checker-report-mode'.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-checker-quit "jde-javadoc" "\
+Quit the `jde-javadoc-checker' report buffer.
+Used in `jde-javadoc-checker-report-mode'.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-customize "jde-javadoc" "\
+Show the jde-javadoc options panel.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-autodoc-at-line "jde-javadoc" "\
+Update javadoc comment block for declaration at current line.
+
+Uses the semantic bovinator parser table to find declarations (see
+`jde-javadoc-nonterminal-at-line').
+
+BEFORE EXECUTING THE COMMAND, THE POINT MUST BE LOCATED AT THE FIRST
+LINE OF THE CLASS OR METHOD DECLARATION.  IF NOT RESULT IS UNCERTAIN.
+
+In the following examples, point is located at the beginning of the
+line, before the word 'public' (but it could be anywhere on this
+line):
+
+1- Class example:
+   -------------
+
+-|-  public class MyClass
+       extends MySuperClass implements Runnable, java.io.Serializable
+     {
+       ...
+
+\\[jde-javadoc-autodoc-at-line] inserts:
+
++    /**
++     * Describe class <code>MyClass</code> here.
++     *
++     * @author \"David Ponce\" <david.ponce@wanadoo.fr>
++     * @version 1.0
++     * @since 1.0
++     * @see MySuperClass
++     * @see Runnable
++     * @see java.io.Serializable
++     */
+     public class MyClass
+       extends MySuperClass implements Runnable, java.io.Serializable
+     {
+       ...
+
+2- Method example:
+   --------------
+
+-|-  public
+     void   myMethod( int  x,  int y )
+       throws Exception
+     {
+       ...
+
+\\[jde-javadoc-autodoc-at-line] inserts:
+
++    /**
++     * Describe <code>myMethod</code> method here.
++     *
++     * @param x an <code>int</code> value
++     * @param y a <code>long</code> value
++     * @exception Exception if an error occurs
++     */
+     public
+     void   myMethod( int  x,  long y )
+       throws Exception
+     {
+       ...
+
+3- Field example:
+   --------------
+
+-|-  private static final int SIZE = 10;
+
+\\[jde-javadoc-autodoc-at-line] inserts:
+
++    /**
++     * Describe constant <code>SIZE</code> here.
++     */
+     private static final int SIZE = 10;
+
+
+`tempo' templates are used for each category of javadoc line.  The
+following templates are currently defined and fully customizable (see
+`tempo-define-template' for the different items that can be used in a
+tempo template):
+
+- - `jde-javadoc-author-tag-template'
+- - `jde-javadoc-describe-class-template'
+- - `jde-javadoc-describe-constructor-template'
+- - `jde-javadoc-describe-interface-template'
+- - `jde-javadoc-describe-method-template'
+- - `jde-javadoc-describe-field-template'
+- - `jde-javadoc-exception-tag-template'
+- - `jde-javadoc-param-tag-template'
+- - `jde-javadoc-return-tag-template'
+- - `jde-javadoc-version-tag-template'
+
+For example if you customize `jde-javadoc-describe-class-template'
+with the following value:
+
+'(\"* \" (P \"Class description: \"))
+
+you will be asked to enter the class description in the minibuffer.
+See also the `jde-javadoc-field-type', `jde-javadoc-a' and
+`jde-javadoc-code' helper functions.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-remdoc-at-line "jde-javadoc" "\
+Remove javadoc comment block for declaration at current line.
+Require confirmation if optional NOCONFIRM is non-nil.
+Return non-nil if done.
+This uses `jde-javadoc-nonterminal-at-line' to find declarations.
+
+\(fn &optional NOCONFIRM)" t nil)
+
+(autoload 'jde-javadoc-checkdoc-at-line "jde-javadoc" "\
+Check javadoc comment block of declaration at current line.
+
+Uses the semantic bovinator parser table to find declarations (see
+`jde-javadoc-nonterminal-at-line').
+
+BEFORE EXECUTING THE COMMAND, THE POINT MUST BE LOCATED AT THE FIRST
+LINE OF THE CLASS OR METHOD DECLARATION.  IF NOT RESULT IS UNCERTAIN.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-checkdoc "jde-javadoc" "\
+Check doc comments of tags in the current buffer.
+Report the next tag with documentation errors.
+
+\(fn)" t nil)
+
+(autoload 'jde-javadoc-remove "jde-javadoc" "\
+Remove all Javadoc from the region (if one is active) or the buffer.
+START, the start position in the buffer.
+END, the end position in the buffer.
+
+\(fn START END)" t nil)
+
+(autoload 'jde-javadoc-enable-menu-p "jde-javadoc" "\
+Return non-nil if corresponding doc menu item is enabled.
+That is point is on the first line of a class, method, or field
+definition.
+
+\(fn)" nil nil)
+
+;;;***
+
 ;;;### (autoloads (jde-javadoc-make-buffer jde-javadoc-make jde-javadoc-make-internal)
-;;;;;;  "jde-javadoc-gen" "jde-javadoc-gen.el" (20899 44901))
+;;;;;;  "jde-javadoc-gen" "jde-javadoc-gen.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-javadoc-gen.el
 
 (autoload 'jde-javadoc-make-internal "jde-javadoc-gen" "\
@@ -758,7 +984,7 @@ definition.
 ;;;### (autoloads (jde-junit-show-options jde-junit-run jde-junit-add-test-to-suite
 ;;;;;;  jde-junit4-test-class-buffer jde-junit-test-class-buffer
 ;;;;;;  jde-junit4-test-class jde-junit-test-class) "jde-junit" "jde-junit.el"
-;;;;;;  (20899 44901))
+;;;;;;  (21157 63922 0 0))
 ;;; Generated autoloads from jde-junit.el
 
 (autoload 'jde-junit-test-class "jde-junit" "\
@@ -811,7 +1037,7 @@ Show the JDE JUnit Options panel.
 ;;;***
 
 ;;;### (autoloads (jde-make-show-options jde-make) "jde-make" "jde-make.el"
-;;;;;;  (20899 44901))
+;;;;;;  (21157 63922 0 0))
 ;;; Generated autoloads from jde-make.el
 
 (autoload 'jde-make "jde-make" "\
@@ -832,7 +1058,7 @@ Show the JDE Make Options panel.
 ;;;***
 
 ;;;### (autoloads (jde-find-class-source jde-read-class) "jde-open-source"
-;;;;;;  "jde-open-source.el" (20899 44901))
+;;;;;;  "jde-open-source.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-open-source.el
 
 (autoload 'jde-read-class "jde-open-source" "\
@@ -881,7 +1107,7 @@ If it finds the source file, it opens the file in a buffer.
 ;;;***
 
 ;;;### (autoloads (jde-package-update) "jde-package" "jde-package.el"
-;;;;;;  (20899 44901))
+;;;;;;  (21157 63922 0 0))
 ;;; Generated autoloads from jde-package.el
 
 (autoload 'jde-package-update "jde-package" "\
@@ -897,9 +1123,25 @@ this command does nothing. This command signals an error if the
 
 ;;;***
 
+;;;### (autoloads (jde-parse-get-buffer-class) "jde-parse" "jde-parse.el"
+;;;;;;  (21157 63922 0 0))
+;;; Generated autoloads from jde-parse.el
+
+(autoload 'jde-parse-get-buffer-class "jde-parse" "\
+Get the fully qualified name of the class of this buffer.
+
+NO-PACKAGE-P, if non-`nil', return only the class name (sans
+package name), otherwise, include the package name.
+
+If called interactively, add the name in the mini-buffer.
+
+\(fn &optional NO-PACKAGE-P)" t nil)
+
+;;;***
+
 ;;;### (autoloads (jde-member-to-attribute jde-camel-to-lisp jde-camel-to-c-const
 ;;;;;;  jde-camel-to-sql jde-hungarian-to-reverse-camel-notation)
-;;;;;;  "jde-parse-expr" "jde-parse-expr.el" (20899 44901))
+;;;;;;  "jde-parse-expr" "jde-parse-expr.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-parse-expr.el
 
 (autoload 'jde-hungarian-to-reverse-camel-notation "jde-parse-expr" "\
@@ -959,8 +1201,26 @@ If called interactively, add the name in the mini-buffer.
 
 ;;;***
 
+;;;### (autoloads (jde-describe-path jde-project-create-project)
+;;;;;;  "jde-project" "jde-project.el" (21157 63922 0 0))
+;;; Generated autoloads from jde-project.el
+
+(autoload 'jde-project-create-project "jde-project" "\
+Creates a JDE project.
+
+\(fn)" t nil)
+
+(autoload 'jde-describe-path "jde-project" "\
+Prints and gives file existance for each path.
+PATH-TYPE is either `global classpath' for `jde-global-classpath' or
+`source path' for `jde-sourcepath'.
+
+\(fn PATH-TYPE &optional BUF)" t nil)
+
+;;;***
+
 ;;;### (autoloads (jde-create-new-project jde-save-project jde-open-project-file)
-;;;;;;  "jde-project-file" "jde-project-file.el" (20899 44901))
+;;;;;;  "jde-project-file" "jde-project-file.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-project-file.el
 
 (autoload 'jde-open-project-file "jde-project-file" "\
@@ -1013,7 +1273,7 @@ PATH-TYPE is either `global classpath' for `jde-global-classpath' or
 ;;;***
 
 ;;;### (autoloads (jde-replace-fully-qualified-class-at-point jde-rename-class)
-;;;;;;  "jde-refactor" "jde-refactor.el" (20899 44901))
+;;;;;;  "jde-refactor" "jde-refactor.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-refactor.el
 
 (autoload 'jde-rename-class "jde-refactor" "\
@@ -1032,7 +1292,7 @@ class.
 
 ;;;### (autoloads (jde-run-applet jde-run jde-run-set-applet-doc
 ;;;;;;  jde-run-set-applet-viewer jde-run-set-app-args jde-run-set-args
-;;;;;;  jde-run-set-app) "jde-run" "jde-run.el" (20899 44901))
+;;;;;;  jde-run-set-app) "jde-run" "jde-run.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-run.el
 
 (autoload 'jde-run-set-app "jde-run" "\
@@ -1106,7 +1366,8 @@ file.
 ;;;***
 
 ;;;### (autoloads (jde-stat-loc-report-directory jde-stat-loc-report-project
-;;;;;;  jde-stat-loc-report) "jde-stat" "jde-stat.el" (20899 44901))
+;;;;;;  jde-stat-loc-report) "jde-stat" "jde-stat.el" (21157 63922
+;;;;;;  0 0))
 ;;; Generated autoloads from jde-stat.el
 
 (autoload 'jde-stat-loc-report "jde-stat" "\
@@ -1136,7 +1397,7 @@ contained in dir.
 ;;;***
 
 ;;;### (autoloads (jde-htmlize-code jde-exception-goto jde-require)
-;;;;;;  "jde-util" "jde-util.el" (20899 44901))
+;;;;;;  "jde-util" "jde-util.el" (21157 63922 0 0))
 ;;; Generated autoloads from jde-util.el
 
 (autoload 'jde-require "jde-util" "\
@@ -1163,7 +1424,7 @@ See `jde-htmlize-code-destinations'.
 ;;;***
 
 ;;;### (autoloads (jde-which-method-mode) "jde-which-method" "jde-which-method.el"
-;;;;;;  (20899 44901))
+;;;;;;  (21157 63922 0 0))
 ;;; Generated autoloads from jde-which-method.el
 
 (defvar jde-which-method-mode t "\
@@ -1177,7 +1438,8 @@ displayed in the mode line.")
 
 ;;;### (autoloads (jde-xref-customize jde-xref-update jde-xref-list-uncalled-functions
 ;;;;;;  jde-xref-display-call-tree jde-xref-next-caller jde-xref-first-caller
-;;;;;;  jde-xref-make-xref-db) "jde-xref" "jde-xref.el" (20899 44901))
+;;;;;;  jde-xref-make-xref-db) "jde-xref" "jde-xref.el" (21157 63922
+;;;;;;  0 0))
 ;;; Generated autoloads from jde-xref.el
 
 (autoload 'jde-xref-make-xref-db "jde-xref" "\

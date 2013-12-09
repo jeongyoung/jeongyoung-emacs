@@ -2473,8 +2473,8 @@ buffer, otherwise, return whether or not it is a legitimate buffer."
   (defun jde-self-test ()
     "Runs jde self tests."
     (interactive)
-    (require 'jde-junit) 
-		(jde-junit-self-test)
+    (require 'jde-junit)
+    (jde-junit-self-test)
     (jde-dbs-self-test)))
 
 

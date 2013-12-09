@@ -3,12 +3,15 @@
 (require 'package)
 
 ; list the packages you want
-(setq package-list '(auto-complete popup yasnippet autopair highlight-parentheses jedi weblogger xml-rpc ecb ggtags jedi magit pony-mode psvn))
+(setq package-list '(auto-complete autopair concurrent ctable deferred epc 
+	highlight-parentheses weblogger xml-rpc ecb ggtags jedi magit pony-mode popup psvn yasnippet ))
 
 
-;;  패키지 저장소
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;  패키지 저장소 Marmalade 추가
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+                                                 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 
 ;; 설치된 패키지들 활성화

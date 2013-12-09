@@ -20,7 +20,7 @@
 
 (add-to-list 'load-path (concat my-root-dir "/vendor/org-toodledo"))
 (add-to-list 'load-path (concat my-root-dir "/vendor/org2blog"))
-(add-to-list 'load-path (concat my-root-dir "/vender/jdee-2.4.1/lisp")) ;jde
+
 
 
 ;; Customization
@@ -68,6 +68,12 @@
 (load-library "my-html")		; html mode
 (load-library "my-gtags")		; global tag mode
 (load-library "my-weblogger")		; weblogger
+
+;(load-library "my-js2")		; js2 
+(load-library "my-company")		; company-mode
+
+(load-library "my-moz")		; company-mode
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

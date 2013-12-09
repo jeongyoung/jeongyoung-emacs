@@ -12,12 +12,21 @@
 (add-to-list 'auto-mode-alist '("\.py$" . python-mode))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
-; use IPython
-(setq-default py-shell-name "ipython")
-(setq-default py-which-bufname "IPython")
+
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args ""
+ python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+ python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+ python-shell-completion-setup-code
+   "from IPython.core.completerlib import module_completion"
+ python-shell-completion-module-string-code
+   "';'.join(module_completion('''%s'''))\n"
+ python-shell-completion-string-code
+   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
    
    
-;(require 'ipython)
+
 ;(setq ansi-color-for-comint-mode t)
 ;(setenv "LC_CTYPE" "UTF-8")
 ;(setq py-python-command-args '("--colors" "NoColor"))
@@ -51,14 +60,15 @@
 ;(setq venv-location "/Users/jeongyoung/.virtualenvs/")
 
 
-;; (defun insert-utf-8-encoding-string ()
-;; 	(interactive)
-;; 	(insert "# -*- coding: utf-8 -*-"))
+(defun insert-utf-8-encoding-string ()
+	(interactive)
+	(insert "# -*- coding: utf-8 -*-"))
 
-;; (define-key py-mode-map "\C-c8" 'insert-utf-8-encoding-string)
+(defun insert-python-beginning-string()
+	(interactive)
+	(insert "#!/usr/bin/env python"))
 
-;; (defun insert-python-beginning-string()
-;; 	(interactive)
-;; 	(insert "#!/usr/bin/env python"))
-
-;; (define-key py-mode-map "\C-c1" 'insert-python-beginning-string)
+(add-hook 'python-mode-hook 
+					(lambda ()						
+						(define-key python-mode-map "\C-c8" 'insert-utf-8-encoding-string)
+						(define-key python-mode-map "\C-c1" 'insert-python-beginning-string)))
