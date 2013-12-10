@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (ede-android-project ede-android-load) "ede/android"
-;;;;;;  "android.el" (21157 58664))
+;;;;;;  "android.el" (21158 13108 0 0))
 ;;; Generated autoloads from android.el
 
 (autoload 'ede-android-load "ede/android" "\
@@ -22,7 +22,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-ant-project ede-ant-load ede-ant-project-root)
-;;;;;;  "ede/ant" "ant.el" (21157 58664))
+;;;;;;  "ede/ant" "ant.el" (21158 13108 0 0))
 ;;; Generated autoloads from ant.el
 
 (defconst ede-ant-project-file-name "build.xml" "\
@@ -48,7 +48,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-arduino-load ede-arduino-file ede-arduino-root)
-;;;;;;  "ede/arduino" "arduino.el" (21157 58664))
+;;;;;;  "ede/arduino" "arduino.el" (21158 13108 0 0))
 ;;; Generated autoloads from arduino.el
 
 (autoload 'ede-arduino-root "ede/arduino" "\
@@ -83,7 +83,7 @@ ROOTPROJ is nil, sinc there is only one project for a directory tree.
 ;;;***
 
 ;;;### (autoloads (ede-cpp-root-project ede-cpp-root-project-root)
-;;;;;;  "ede/cpp-root" "cpp-root.el" (21157 58664))
+;;;;;;  "ede/cpp-root" "cpp-root.el" (21158 13108 0 0))
 ;;; Generated autoloads from cpp-root.el
 
 (autoload 'ede-cpp-root-project-root "ede/cpp-root" "\
@@ -98,7 +98,8 @@ Get the root directory for DIR.
 ;;;***
 
 ;;;### (autoloads (ede-project-sort-targets ede-customize-current-target
-;;;;;;  ede-customize-project) "ede/custom" "custom.el" (21157 58664))
+;;;;;;  ede-customize-project) "ede/custom" "custom.el" (21158 13108
+;;;;;;  0 0))
 ;;; Generated autoloads from custom.el
 
 (autoload 'ede-customize-project "ede/custom" "\
@@ -123,7 +124,7 @@ Create a custom-like buffer for sorting targets of current project.
 ;;;***
 
 ;;;### (autoloads (ede-emacs-project-root) "ede/emacs" "emacs.el"
-;;;;;;  (21157 58664))
+;;;;;;  (21158 13108 0 0))
 ;;; Generated autoloads from emacs.el
 
 (autoload 'ede-emacs-project-root "ede/emacs" "\
@@ -135,7 +136,8 @@ Get the root directory for DIR.
 
 ;;;***
 
-;;;### (autoloads (ede-find-file) "ede/files" "files.el" (21157 58664))
+;;;### (autoloads (ede-find-file) "ede/files" "files.el" (21158 13108
+;;;;;;  0 0))
 ;;; Generated autoloads from files.el
 
 (autoload 'ede-find-file "ede/files" "\
@@ -148,7 +150,7 @@ the current EDE project.
 ;;;***
 
 ;;;### (autoloads (ede-enable-generic-projects) "ede/generic" "generic.el"
-;;;;;;  (21157 58664))
+;;;;;;  (21158 13108 0 0))
 ;;; Generated autoloads from generic.el
 
 (autoload 'ede-enable-generic-projects "ede/generic" "\
@@ -159,7 +161,7 @@ Enable generic project loaders.
 ;;;***
 
 ;;;### (autoloads (ede-java-root-project ede-java-root-project-root)
-;;;;;;  "ede/java-root" "java-root.el" (21157 58664))
+;;;;;;  "ede/java-root" "java-root.el" (21158 13108 0 0))
 ;;; Generated autoloads from java-root.el
 
 (autoload 'ede-java-root-project-root "ede/java-root" "\
@@ -174,7 +176,7 @@ Get the root directory for DIR.
 ;;;***
 
 ;;;### (autoloads (ede-jvm-base-project) "ede/jvm-base" "jvm-base.el"
-;;;;;;  (21157 58664))
+;;;;;;  (21158 13108 0 0))
 ;;; Generated autoloads from jvm-base.el
 
 (eieio-defclass-autoload 'ede-jvm-base-project '(ede-project) "ede/jvm-base" "Base project class for JVM-base projects.")
@@ -182,7 +184,7 @@ Get the root directory for DIR.
 ;;;***
 
 ;;;### (autoloads (ede-lein2-project ede-lein2-load ede-lein2-project-root)
-;;;;;;  "ede/lein2" "lein2.el" (21157 58664))
+;;;;;;  "ede/lein2" "lein2.el" (21158 13108 0 0))
 ;;; Generated autoloads from lein2.el
 
 (defconst ede-lein2-project-file-name "project.clj" "\
@@ -208,7 +210,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-linux-load ede-linux-project-root) "ede/linux"
-;;;;;;  "linux.el" (21157 58664))
+;;;;;;  "linux.el" (21158 13108 0 0))
 ;;; Generated autoloads from linux.el
 
 (autoload 'ede-linux-project-root "ede/linux" "\
@@ -229,7 +231,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-enable-locate-on-project) "ede/locate" "locate.el"
-;;;;;;  (21157 58664))
+;;;;;;  (21158 13108 0 0))
 ;;; Generated autoloads from locate.el
 
 (autoload 'ede-enable-locate-on-project "ede/locate" "\
@@ -241,7 +243,8 @@ based on `ede-locate-setup-options'.
 
 ;;;***
 
-;;;### (autoloads (ede-m3-install) "ede/m3" "m3.el" (21157 58664))
+;;;### (autoloads (ede-m3-install) "ede/m3" "m3.el" (21158 13108
+;;;;;;  0 0))
 ;;; Generated autoloads from m3.el
 
 (autoload 'ede-m3-install "ede/m3" "\
@@ -251,8 +254,8 @@ based on `ede-locate-setup-options'.
 
 ;;;***
 
-;;;### (autoloads (ede-make-check-version) "ede/make" "make.el" (21157
-;;;;;;  58664))
+;;;### (autoloads (ede-make-check-version) "ede/make" "make.el" (21158
+;;;;;;  13108 0 0))
 ;;; Generated autoloads from make.el
 
 (autoload 'ede-make-check-version "ede/make" "\
@@ -267,7 +270,7 @@ If NOERROR is nil, then throw an error on failure.  Return t otherwise.
 ;;;***
 
 ;;;### (autoloads (ede-maven2-project ede-maven2-load ede-maven2-project-root)
-;;;;;;  "ede/maven2" "maven2.el" (21157 58664))
+;;;;;;  "ede/maven2" "maven2.el" (21158 13108 0 0))
 ;;; Generated autoloads from maven2.el
 
 (autoload 'ede-maven2-project-root "ede/maven2" "\
@@ -290,7 +293,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-speedbar-file-setup) "ede/speedbar" "speedbar.el"
-;;;;;;  (21157 58664))
+;;;;;;  (21158 13108 0 0))
 ;;; Generated autoloads from speedbar.el
 
 (autoload 'ede-speedbar-file-setup "ede/speedbar" "\
@@ -302,7 +305,7 @@ Setup some keybindings in the Speedbar File display.
 
 ;;;### (autoloads (ede-vc-project-directory ede-upload-html-documentation
 ;;;;;;  ede-upload-distribution ede-edit-web-page ede-web-browse-home)
-;;;;;;  "ede/system" "system.el" (21157 58664))
+;;;;;;  "ede/system" "system.el" (21158 13108 0 0))
 ;;; Generated autoloads from system.el
 
 (autoload 'ede-web-browse-home "ede/system" "\
@@ -336,8 +339,8 @@ Run `vc-dir' on the current project.
 
 ;;;***
 
-;;;### (autoloads (ede-update-version) "ede/util" "util.el" (21157
-;;;;;;  58664))
+;;;### (autoloads (ede-update-version) "ede/util" "util.el" (21158
+;;;;;;  13108 0 0))
 ;;; Generated autoloads from util.el
 
 (autoload 'ede-update-version "ede/util" "\
@@ -353,7 +356,7 @@ Argument NEWVERSION is the version number to use in the current project.
 ;;;;;;  "proj-aux.el" "proj-comp.el" "proj-elisp.el" "proj-info.el"
 ;;;;;;  "proj-misc.el" "proj-obj.el" "proj-prog.el" "proj-scheme.el"
 ;;;;;;  "proj-shared.el" "proj.el" "project-am.el" "shell.el" "source.el"
-;;;;;;  "srecode.el") (21157 59240 662356))
+;;;;;;  "srecode.el") (21158 13544 121581 0))
 
 ;;;***
 

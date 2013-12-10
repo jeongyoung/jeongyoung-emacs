@@ -72,7 +72,8 @@
 ;(load-library "my-js2")		; js2 
 (load-library "my-company")		; company-mode
 
-(load-library "my-moz")		; company-mode
+(load-library "my-moz")		; 
+(load-library "my-flymake")		; flymake
 
 
 (custom-set-variables

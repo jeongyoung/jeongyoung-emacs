@@ -67,4 +67,8 @@
 	 ;; 	do (add-to-list 'el-get-sources p)))
 
 	 ;; install new packages and init already installed packages
-	 (el-get 'sync)
+
+(setq my-el-get-packages
+			'(nxhtml))
+
+(el-get 'sync my-el-get-packages)

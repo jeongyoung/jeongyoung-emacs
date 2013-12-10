@@ -3,9 +3,25 @@
 (require 'package)
 
 ; list the packages you want
-(setq package-list '(auto-complete autopair concurrent ctable deferred epc 
-	highlight-parentheses weblogger xml-rpc ecb ggtags jedi magit pony-mode popup psvn yasnippet ))
-
+(setq package-list '(auto-complete 
+										 autopair 
+										 concurrent 
+										 ctable 
+										 deferred 
+										 epc 
+										 highlight-parentheses 
+										 weblogger 
+										 xml-rpc 
+										 ecb 
+										 ggtags 
+										 jedi 
+										 magit 
+										 pony-mode 
+										 popup 
+										 psvn 
+										 yasnippet
+										 flymake
+										 ))
 
 ;;  패키지 저장소 Marmalade 추가
 (add-to-list 'package-archives
