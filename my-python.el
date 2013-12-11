@@ -34,20 +34,54 @@
 
 
 ;; jedi 자동완성
+;; http://tkf.github.io/emacs-jedi/
+
+
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
+(add-hook 'python-mode-hook 'auto-complete-mode)
+
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
 
 
 	;; 도움말 문서
-(require 'info-look)
-	(info-lookup-add-help
-	 :mode 'python-mode
-	 :regexp "[[:alnum:]_]+"
-	 :doc-spec
-	 '(("(python)Index" nil "")))
-	 
+;; (require 'info-look)
+;; 	(info-lookup-add-help
+;; 	 :mode 'python-mode
+;; 	 :regexp "[[:alnum:]_]+"
+;; 	 :doc-spec
+;; 	 '(("(python)Index" nil "")))
+
+
+(add-to-list 'load-path (concat my-root-dir "/vendor/pydoc-info-0.2"))
+(require 'pydoc-info)
+
+(info-lookup-add-help
+ :mode 'python-mode
+ :parse-rule 'pydoc-info-python-symbol-at-point
+ :doc-spec
+ '(("(python)Index" pydoc-info-lookup-transform-entry)
+	 ("(django)Index" pydoc-info-lookup-transform-entry)))
+
+(add-to-list 'load-path (concat my-root-dir "/vendor/pylookup"))
+
+; load pylookup when compile time
+(eval-when-compile (require 'pylookup))
+
+;; set executable file and db file
+(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+
+;; to speedup, just load it on demand
+(autoload 'pylookup-lookup "pylookup"
+  "Lookup SEARCH-TERM in the Python HTML indexes." t)
+(autoload 'pylookup-update "pylookup" 
+  "Run pylookup-update and create the database at `pylookup-db-file'." t)
+
+(global-set-key "\C-ch" 'pylookup-lookup)
+
+
 	 
 ;(require 'virtualenv)
 
@@ -72,3 +106,5 @@
 					(lambda ()						
 						(define-key python-mode-map "\C-c8" 'insert-utf-8-encoding-string)
 						(define-key python-mode-map "\C-c1" 'insert-python-beginning-string)))
+
+
