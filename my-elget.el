@@ -68,7 +68,9 @@
 
 	 ;; install new packages and init already installed packages
 
-(setq my-el-get-packages
-			'(nxhtml))
+;; (setq my-el-get-packages
+;; 			'(nxhtml))
 
-(el-get 'sync my-el-get-packages)
+;; (el-get 'sync my-el-get-packages)
+
+(el-get 'sync)

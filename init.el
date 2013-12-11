@@ -28,7 +28,7 @@
 
 (load-library "my-reload-dotemacs")		;이맥스 설정파일 리로딩
 (load-library "my-packages")	; emacs package management, 
-(load-library "my-elget")	; emacs el-get
+;(load-library "my-elget")	; emacs el-get
 (load-library "my-bindings")		;emacs keyboard shortcuts
 (load-library "my-system")		;emacs system configuration
 (load-library "my-visual")		; color,font...
@@ -74,6 +74,7 @@
 
 (load-library "my-moz")		; 
 (load-library "my-flymake")		; flymake
+(load-library "my-nxhtml")		; nxhtml
 
 
 (custom-set-variables
