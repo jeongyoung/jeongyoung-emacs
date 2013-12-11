@@ -18,4 +18,4 @@
 (define-key ecb-mode-map (kbd "M-5") 'ecb-goto-window-compilation)
 (define-key ecb-mode-map (kbd "M-0") 'ecb-goto-window-edit1)
 
-(ecb-layout-name "left1")
+(setq ecb-layout-name "left1")
