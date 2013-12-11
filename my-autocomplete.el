@@ -21,4 +21,3 @@
 ;(setq-default ac-sources '(ac-source-semantic-raw))
 (setq-default ac-sources '(ac-source-semantic ac-source-semantic-raw))
 
-

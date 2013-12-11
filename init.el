@@ -84,14 +84,11 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(ecb-options-version "2.32")
- '(ecb-wget-setup (quote cons))
  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
  '(python-django-qmgmt-runserver-default-bindaddr "0.0.0.0:8000")
  '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
 ") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
-") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython"))))
- )
+") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
