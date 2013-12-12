@@ -64,7 +64,8 @@
  '(("(python)Index" pydoc-info-lookup-transform-entry)
 	 ("(django)Index" pydoc-info-lookup-transform-entry)))
 
-(add-to-list 'load-path (concat my-root-dir "/vendor/pylookup"))
+(setq pylookup-dir (concat my-root-dir "/vendor/pylookup"))
+(add-to-list 'load-path pylookup-dir)
 
 ; load pylookup when compile time
 (eval-when-compile (require 'pylookup))
@@ -81,6 +82,8 @@
 
 (global-set-key "\C-ch" 'pylookup-lookup)
 
+;(setq browse-url-browser-function 'w3m-browse-url) ;; w3m
+;(setq browse-url-default-browser "firefox.exe")
 
 	 
 ;(require 'virtualenv)

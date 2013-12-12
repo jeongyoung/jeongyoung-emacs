@@ -84,7 +84,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(ecb-layout-window-sizes nil)
+ '(ecb-layout-window-sizes (quote (("left3" (ecb-directories-buffer-name 0.16981132075471697 . 0.2835820895522388) (ecb-sources-buffer-name 0.16981132075471697 . 0.34328358208955223) (ecb-methods-buffer-name 0.16981132075471697 . 0.3582089552238806)))))
  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
  '(python-django-qmgmt-runserver-default-bindaddr "0.0.0.0:8000")
  '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))

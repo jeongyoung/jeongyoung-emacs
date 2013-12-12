@@ -19,3 +19,4 @@ tramp
 /tramp
 eshell/
 abbrev_defs
+*.DS_Store

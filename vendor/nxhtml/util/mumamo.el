@@ -2828,7 +2828,7 @@ most major modes."
     ;;font-lock-mode-major-mode
     font-lock-set-defaults
     font-lock-syntax-table
-    font-lock-beginning-of-syntax-function
+    syntax-begin-function
     fontification-functions
     jit-lock-context-unfontify-pos
     jit-lock-mode
@@ -3087,7 +3087,7 @@ The main reasons for doing it this way is:
                (list 'font-lock-extend-region-functions (custom-quote font-lock-extend-region-functions))
                (list 'font-lock-comment-start-skip (custom-quote font-lock-comment-start-skip))
                (list 'font-lock-comment-end-skip (custom-quote font-lock-comment-end-skip))
-               (list 'font-lock-syntactic-keywords (custom-quote font-lock-syntactic-keywords))
+               (list 'syntax-propertize-function (custom-quote syntax-propertize-function))
 
                (list 'font-lock-keywords (custom-quote font-lock-keywords))
                ;;(list 'font-lock-keywords-alist (custom-quote font-lock-keywords-alist))
@@ -3105,7 +3105,7 @@ The main reasons for doing it this way is:
                (list 'font-lock-defaults (custom-quote (copy-tree font-lock-defaults)))
                ;; Syntactic Font Lock
                (list 'font-lock-syntax-table (custom-quote font-lock-syntax-table)) ;; See nXhtml bug 400415
-               (list 'font-lock-beginning-of-syntax-function (custom-quote font-lock-beginning-of-syntax-function))
+               (list 'syntax-begin-function (custom-quote syntax-begin-function))
                (list 'font-lock-syntactic-face-function (custom-quote font-lock-syntactic-face-function))
 
                ;; Other Font Lock Variables
@@ -4178,9 +4178,9 @@ after this in the properties below of the now created chunk:
                          syntax-begin-function)
                      (when (and (not syntax-begin-function)
                                 ;; fix-me: How to handle boundp here?
-                                (boundp 'font-lock-beginning-of-syntax-function)
-                                font-lock-beginning-of-syntax-function)
-                       font-lock-beginning-of-syntax-function)))))
+                                (boundp 'syntax-begin-function)
+                                syntax-begin-function)
+                       syntax-begin-function)))))
           (mumamo-msgfntfy "Got syntax-begin-function, modified=%s" (buffer-modified-p))
           (overlay-put this-chunk 'syntax-begin-function syntax-begin-function))
         )
@@ -6103,7 +6103,7 @@ Save HOOK and the list of functions removed to
     end-of-defun-function
 
     fill-paragraph-function
-    font-lock-beginning-of-syntax-function
+    syntax-begin-function
     font-lock-defaults
     font-lock-extend-after-change-region-function
     font-lock-extend-region-functions
@@ -6118,7 +6118,7 @@ Save HOOK and the list of functions removed to
     font-lock-mode-major-mode
     font-lock-multiline
     font-lock-set-defaults
-    font-lock-syntactic-keywords
+    syntax-propertize-function
     font-lock-syntactically-fontified
     font-lock-syntax-table
     font-lock-unfontify-buffer-function
@@ -8257,7 +8257,7 @@ See the defadvice for `syntax-ppss' for an explanation."
 
 ;; FIX-ME: There is a problem with " in xhtml files, especially after
 ;; syntax="...".  Looks like it is the " entry in
-;; `sgml-font-lock-syntactic-keywords' that is jumping in!  Dumping
+;; `sgml-syntax-propertize-function' that is jumping in!  Dumping
 ;; things in `font-lock-apply-syntactic-highlight' seems to show that.
 ;;
 ;; (I have put in some dump code in my patched version of
@@ -8273,7 +8273,7 @@ See the defadvice for `syntax-ppss' for an explanation."
 ;;       .)
 ;;
 ;;
-;; It comes from `sgml-font-lock-syntactic-keywords' in sgml-mode.el
+;; It comes from `sgml-syntax-propertize-function' in sgml-mode.el
 ;; and is supposed to protect from " that is not inside a tag.
 ;; However in this case for the second " in syntax="..." `syntax-ppss'
 ;; returns 0 as the first element in its return value.  That happen
