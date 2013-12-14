@@ -9,9 +9,9 @@
 ;(if window-system
 ;	(set-face-font 'default "-apple-NanumGothicCoding-medium-normal-normal-*-13-*-*-*-m-0-*-*"))
 
-(setq ansi-color-names-vector
-      ["black" "tomato" "PaleGreen2" "gold1"
-       "DeepSkyBlue1" "MediumOrchid1" "cyan" "white"])
+;(setq ansi-color-names-vector
+;      ["black" "tomato" "PaleGreen2" "gold1"
+;       "DeepSkyBlue1" "MediumOrchid1" "cyan" "white"])
 
 
 (setq default-frame-alist 
@@ -27,32 +27,63 @@
 				(scroll-bar-mode . 0)
 				(cursor-color . "red")
 				(cursor-type . "box")
-				(menu-bar-lines . 0)))
+				(menu-bar-lines . 0)
+				))
 
 
 ;; color-theme
-
+(add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
 (require 'color-theme)
-
-(color-theme-initialize)
-
 ;(color-theme-deep-blue)
 ;(color-theme-midnight)
 ;(color-theme-dark-blue2)
 ;(color-theme-gnome2)
-(color-theme-classic)
+;(color-theme-classic)
+
+;(eval-after-load "color-theme"
+;	'(progn
+;		 (color-theme-initialize)
+;		 (color-theme-classic)))
+
+
+
 
 ;;
 ;; color-theme-solarized
 ;; http://ethanschoonover.com/solarized
-;; 
 
-;(add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-solarized"))
-;(require 'color-theme-solarized)
-;(color-theme-solarized-dark)
+;; (add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-solarized"))
+;; (add-to-list 'custom-theme-load-path (concat my-root-dir "/vendor/color-theme-solarized"))
+;; (require 'color-theme-solarized)
 
-(if (functionp 'tool-bar-mode) (tool-bar-mode -1))
-(if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
+;; (require 'solarized-definitions
+;; 				 (locate-file "solarized-definitions.el" custom-theme-load-path
+;; 											'("c" "")))
+;; (create-solarized-theme dark)
+;; (load-theme 'solarized-dark t)
+
+
+
+
+
+
+
+;; solarized theme 
+;; https://github.com/bbatsov/solarized-emacs
+(add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
+(add-to-list 'custom-theme-load-path (concat my-root-dir "/themes"))
+(require 'solarized)
+
+(setq solarized-termcolor 256)
+(deftheme solarized-dark "The dark variant of the Solarized colour theme")
+(create-solarized-theme 'dark 'solarized-dark)
+(provide-theme 'solarized-dark)
+(load-theme 'solarized-dark t)
+
+
+
+;(if (functionp 'tool-bar-mode) (tool-bar-mode -1))
+;(if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 
 ;(if window-system (set-face-font 'default "NanumGothicCoding-14"))

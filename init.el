@@ -13,7 +13,7 @@
 ;(add-to-list 'load-path my-root-dir)
 (add-to-list 'load-path (concat my-root-dir "/auto-install"))
 (add-to-list 'load-path (concat my-root-dir "/vendor"))
-(add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
+
 ;(add-to-list 'load-path (concat my-root-dir "/vendor/orgmode/lisp"))
 
 ; 2013-12-07 comment because org-mode built in emacs24
@@ -77,23 +77,4 @@
 (load-library "my-nxhtml")		; nxhtml
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(ecb-layout-window-sizes (quote (("left3" (ecb-directories-buffer-name 0.16981132075471697 . 0.2835820895522388) (ecb-sources-buffer-name 0.16981132075471697 . 0.34328358208955223) (ecb-methods-buffer-name 0.16981132075471697 . 0.3582089552238806)))))
- '(org-hide ((((background dark)) (:foreground "darkslateg"))))
- '(python-django-qmgmt-runserver-default-bindaddr "0.0.0.0:8000")
- '(safe-local-variable-values (quote ((python-shell-interpreter . "python") (python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
-") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
-") (python-shell-completion-setup-code . "from IPython.core.completerlib import module_completion") (python-shell-interpreter-args . "/Users/jeongyoung/Documents/workspace_aptana/lms/manage.py shell") (python-shell-interpreter . "ipython")))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'set-goal-column 'disabled nil)
+
