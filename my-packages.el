@@ -23,6 +23,7 @@
 										 auto-complete
 										 flymake
 										 markdown-mode
+										 virtualenvwrapper
 										 ))
 
 ;;  패키지 저장소 Marmalade 추가

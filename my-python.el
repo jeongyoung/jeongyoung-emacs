@@ -89,12 +89,14 @@
 ;(require 'virtualenv)
 
 
-;; https://github.com/porterjamesj/virtualenvwrapper.el
+;https://github.com/porterjamesj/virtualenvwrapper.el
 ;(require 'virtualenvwrapper)
+;
+; install package manager
 
-;(venv-initialize-interactive-shells) ;; if you want interactive shell support
-;(venv-initialize-eshell) ;; if you want eshell support
-;(setq venv-location "/Users/jeongyoung/.virtualenvs/")
+(venv-initialize-interactive-shells) ;; if you want interactive shell support
+(venv-initialize-eshell) ;; if you want eshell support
+(setq venv-location "~/.virtualenvs/")
 
 
 (defun insert-utf-8-encoding-string ()
