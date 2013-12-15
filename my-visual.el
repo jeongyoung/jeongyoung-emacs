@@ -14,6 +14,7 @@
 ;       "DeepSkyBlue1" "MediumOrchid1" "cyan" "white"])
 
 
+(tool-bar-mode -1)
 (setq default-frame-alist 
       '((width . 100) (height . 55) 
 ;	(font . "-apple-NanumGothicCoding-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
@@ -29,6 +30,7 @@
 				(cursor-type . "box")
 				(menu-bar-lines . 0)
 				))
+
 
 
 ;; color-theme

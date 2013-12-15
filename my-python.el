@@ -82,7 +82,7 @@
 
 (global-set-key "\C-ch" 'pylookup-lookup)
 
-;(setq browse-url-browser-function 'w3m-browse-url) ;; w3m
+(setq browse-url-browser-function 'w3m-browse-url) ;; w3m
 ;(setq browse-url-default-browser "firefox.exe")
 
 	 

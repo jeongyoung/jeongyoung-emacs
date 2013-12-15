@@ -24,6 +24,7 @@
 										 flymake
 										 markdown-mode
 										 virtualenvwrapper
+										 w3m
 										 ))
 
 ;;  패키지 저장소 Marmalade 추가
