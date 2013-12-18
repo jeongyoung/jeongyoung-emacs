@@ -19,4 +19,6 @@ tramp
 /tramp
 eshell/
 abbrev_defs
-*.DS_Store
+.DS_Store
+TAGS
+url/chookies

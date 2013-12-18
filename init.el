@@ -37,7 +37,7 @@
 (load-library "my-private")			; private configuration
 
 		
-(load-library "my-cedet")		; cedet setting	
+;(load-library "my-cedet")		; cedet setting	
 (load-library "my-ecb")			; ecb setting
 (load-library "my-python")		; python-mode, ipython,pylookup settings
 (load-library "my-django")		; python-django
@@ -54,7 +54,8 @@
 (load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
 (load-library "my-org")			; org-mode
-(load-library "my-jde")			; jde-mode
+;(load-library "my-jde")			; jde-mode
+(load-library "my-eclim")			; emacs-eclim
 
 ;(load-library "my-maxframe")			; maxframe
 ;(load-library "my-wordpress")			; org2blog for wordpress
@@ -85,6 +86,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+
  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
  '(safe-local-variable-values (quote ((python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
 ") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))

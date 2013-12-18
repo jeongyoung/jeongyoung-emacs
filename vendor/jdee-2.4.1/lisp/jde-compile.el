@@ -1154,6 +1154,23 @@ If t (or other non-nil non-number) then kill in 2 secs."
   ;; Set compiler version.
   (oset this version "1.6"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                                            ;;
+;; J2SDK 1.7 Compiler                                                         ;;
+;;                                                                            ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defclass jde-compile-javac-17 (jde-compile-javac-16)
+  ()
+  "Class of JDK 1.7 javac compilers.")
+
+(defmethod initialize-instance ((this jde-compile-javac-17) &rest fields)
+ ;; Call parent initializer.
+
+  (call-next-method)
+
+  ;; Set compiler version.
+  (oset this version "1.7"))
+
 (defmethod jde-compile-annotation-processors-arg ((this jde-compile-javac-16))
   "Get the annotation processors argument for this compiler."
   (if jde-compile-option-annotation-processors
@@ -1302,7 +1319,8 @@ If t (or other non-nil non-number) then kill in 2 secs."
    (jde-compile-javac-13 "javac 1.3.x")
    (jde-compile-javac-14 "javac 1.4.x")
    (jde-compile-javac-15 "javac 1.5.x")
-   (jde-compile-javac-16 "javac 1.6.x"))
+   (jde-compile-javac-16 "javac 1.6.x")
+   (jde-compile-javac-17 "javac 1.7.x"))
   "List of supported javac compilers.")
 
 (defun jde-compile-get-javac ()
