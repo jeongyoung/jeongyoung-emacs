@@ -34,18 +34,21 @@
 
 
 ;; color-theme
-(add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
-(require 'color-theme)
+;(add-to-list 'load-path (concat my-root-dir "/vendor/color-theme-6.6.0"))
+;(require 'color-theme)
 ;(color-theme-deep-blue)
 ;(color-theme-midnight)
 ;(color-theme-dark-blue2)
 ;(color-theme-gnome2)
 ;(color-theme-classic)
 
-;(eval-after-load "color-theme"
-;	'(progn
-;		 (color-theme-initialize)
-;		 (color-theme-classic)))
+;(add-to-list 'custom-theme-load-path (concat my-root-dir "/themes"))
+
+;; (eval-after-load "color-theme"
+;; 	'(progn
+;; 		 (color-theme-initialize)
+;; 		 (color-theme-hober)						 
+;; 		 ))
 
 
 
@@ -66,21 +69,26 @@
 
 
 
-
-
-
-
 ;; solarized theme 
 ;; https://github.com/bbatsov/solarized-emacs
-(add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
-(add-to-list 'custom-theme-load-path (concat my-root-dir "/themes"))
-(require 'solarized)
 
-(setq solarized-termcolor 256)
-(deftheme solarized-dark "The dark variant of the Solarized colour theme")
-(create-solarized-theme 'dark 'solarized-dark)
-(provide-theme 'solarized-dark)
-(load-theme 'solarized-dark t)
+;; (add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
+;; (require 'solarized)
+
+;; (setq solarized-termcolor 256)
+;; (deftheme solarized-dark "The dark variant of the Solarized colour theme")
+;; (create-solarized-theme 'dark 'solarized-dark)
+;; (provide-theme 'solarized-dark)
+;; (load-theme 'solarized-dark t)
+
+
+
+
+;; zenburn-theme by package
+(load-theme 'zenburn t)
+
+;; sanityinc-solarized by package
+;(load-theme 'sanityinc-solarized-dark t)
 
 
 

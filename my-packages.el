@@ -25,6 +25,9 @@
 										 markdown-mode
 										 virtualenvwrapper
 										 w3m
+										 clojure-mode
+										 cider
+										 zenburn-theme
 										 ))
 
 ;;  패키지 저장소 Marmalade 추가
