@@ -23,13 +23,20 @@
 ;	(font . "MalgunGothic-14")
 ;	(font . "-apple-Malgun_Gothic-medium-normal-normal-*-*-*-*-*-p-0-iso10646-1")
 ;	(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-				(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-;				(font . "NanumGothicCoding-14")
+				(when (equal system-type 'darwin)
+					(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1"))
 				(scroll-bar-mode . 0)
 				(cursor-color . "red")
 				(cursor-type . "box")
 				(menu-bar-lines . 0)
 				))
+
+(when (equal system-type 'gnu/linux)
+	;(set-fontset-font "fontset-default" 'korean-ksc5601 "-unknown-나눔고딕코딩-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
+  (set-fontset-font "fontset-default" 'korean-ksc5601 "-bitstream-Bitstream Vera Sans Mono-normal-normal-normal-*-13-*-*-*-*-0-iso10646-1")
+  (set-face-font 'default "-bitstream-Bitstream Vera Sans Mono-normal-normal-normal-*-13-*-*-*-*-0-iso10646-1")
+	)
+
 
 
 
@@ -42,10 +49,10 @@
 ;(color-theme-gnome2)
 ;(color-theme-classic)
 
-;(eval-after-load "color-theme"
-;	'(progn
-;		 (color-theme-initialize)
-;		 (color-theme-classic)))
+(eval-after-load "color-theme"
+	'(progn
+		 (color-theme-initialize)
+		 (color-theme-midnight)))
 
 
 
@@ -72,17 +79,17 @@
 
 ;; solarized theme 
 ;; https://github.com/bbatsov/solarized-emacs
-(add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
-(add-to-list 'custom-theme-load-path (concat my-root-dir "/themes"))
-(require 'solarized)
+;; (add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
+;; (add-to-list 'custom-theme-load-path (concat my-root-dir "/themes"))
+;; (require 'solarized)
 
-(setq solarized-termcolor 256)
-(deftheme solarized-dark "The dark variant of the Solarized colour theme")
-(create-solarized-theme 'dark 'solarized-dark)
-(provide-theme 'solarized-dark)
-(load-theme 'solarized-dark t)
+;; (setq solarized-termcolor 256)
+;; (deftheme solarized-dark "The dark variant of the Solarized colour theme")
+;; (create-solarized-theme 'dark 'solarized-dark)
+;; (provide-theme 'solarized-dark)
+;; (load-theme 'solarized-dark t)
 
-
+(load-theme 'zenburn t)
 
 ;(if (functionp 'tool-bar-mode) (tool-bar-mode -1))
 ;(if (functionp 'scroll-bar-mode) (scroll-bar-mode -1))

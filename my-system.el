@@ -11,7 +11,6 @@
 (make-directory "~/.emacs.d/autosaves/" t) 
 
 
-
 ;; (let ((type (emacs-type)))
 ;;   ;;mac
 ;;   (cond ((eq type 'emacs-mac-window)

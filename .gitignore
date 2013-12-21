@@ -20,3 +20,7 @@ tramp
 eshell/
 abbrev_defs
 *.DS_Store
+/semanticdb
+srecode-map.el
+/tutorial
+*xhtml-loader.rnc
