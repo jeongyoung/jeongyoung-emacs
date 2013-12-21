@@ -1,0 +1,11 @@
+Emacs.Fontset-0:-*-Bitstream Vera Sans Mono-*-*-*-*-14-*-*-*-*-*-fontset-vera14,\
+          latin:-*-Bitstream Vera Sans Mono-*-*-*-*-14-*-*-*-*-*-*-*, \
+         hangul:-*-Bitstream Vera Sans Mono-*-*-*-*-14-*-*-*-*-*-*-*, \
+
+Emacs*Fontset-1:-*-Monaco-*-*-*-*-14-*-*-*-*-*-fontset-monaco,\
+          latin:-*-Monaco-*-*-*-*-14-*-*-*-*-*-*,\
+        hangul:-*-NanumGothic_Coding-*-*-*-*-*-*-*-*-*-*-*
+
+Emacs.Font: fontset-vera14
+Emacs.useXIM: off
+
