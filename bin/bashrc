@@ -1,0 +1,5 @@
+# emacsclient alias
+alias em="emacsclient -c -n -a \"\""
+alias et="emacsclient -t"
+alias ek="emacsclient -e '(kill-emacs)'"
+alias es="SUDO_EDITOR=\"emacsclient -c -n -a emacs\" sudoedit"
