@@ -34,7 +34,7 @@
 (load-library "my-visual")		; color,font...
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-misc")		; miscellaneous setting
-(load-library "my-private")			; private configuration
+
 
 		
 (load-library "my-cedet")		; cedet setting	
@@ -53,7 +53,7 @@
 ;(load-library "my-autoinstall")		; auto-install
 (load-library "my-autocomplete")	; auto-complete
 ;(load-library "my-anything")		; anything
-(load-library "my-org")			; org-mode
+;(load-library "my-org")			; org-mode
 (load-library "my-jde")			; jde-mode
 
 ;(load-library "my-maxframe")			; maxframe
@@ -67,7 +67,8 @@
 ;(load-library "my-lua")			; lua-mode
 (load-library "my-html")		; html mode
 (load-library "my-gtags")		; global tag mode
-(load-library "my-weblogger")		; weblogger
+;(load-library "my-private")			; private configuration
+;(load-library "my-weblogger")		; weblogger
 
 ;(load-library "my-js2")		; js2 
 (load-library "my-company")		; company-mode
