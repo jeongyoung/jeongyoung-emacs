@@ -86,7 +86,7 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(custom-safe-themes (quote ("8eef22cd6c122530722104b7c82bc8cdbb690a4ccdd95c5ceec4f3efa5d654f5" default)))
+ '(custom-safe-themes (quote ("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" "8eef22cd6c122530722104b7c82bc8cdbb690a4ccdd95c5ceec4f3efa5d654f5" default)))
  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
  '(safe-local-variable-values (quote ((python-shell-completion-string-code . "';'.join(get_ipython().Completer.all_completions('''%s'''))
 ") (python-shell-completion-module-string-code . "';'.join(module_completion('''%s'''))
@@ -97,3 +97,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'set-goal-column 'disabled nil)
