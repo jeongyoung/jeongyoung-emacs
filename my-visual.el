@@ -27,7 +27,7 @@
 				(scroll-bar-mode . 0)
 				(cursor-color . "red")
 				(cursor-type . "box")
-				(menu-bar-lines . 0)
+				(menu-bar-lines . 1)
 				))
 
 (when (equal system-type 'gnu/linux)

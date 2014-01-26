@@ -66,7 +66,7 @@
 ;(load-library "my-git")			; egg for git
 ;(load-library "my-lua")			; lua-mode
 (load-library "my-html")		; html mode
-(load-library "my-gtags")		; global tag mode
+;(load-library "my-gtags")		; global tag mode
 ;(load-library "my-private")			; private configuration
 ;(load-library "my-weblogger")		; weblogger
 
