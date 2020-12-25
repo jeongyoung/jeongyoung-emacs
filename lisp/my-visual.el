@@ -72,20 +72,20 @@
 ;; solarized theme 
 ;; https://github.com/bbatsov/solarized-emacs
 
-(add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
-(require 'solarized)
+;(add-to-list 'load-path (concat my-root-dir "/vendor/solarized-emacs"))
+;(require 'solarized)
 
-(setq solarized-termcolor 256)
-(deftheme solarized-dark "The dark variant of the Solarized colour theme")
-(create-solarized-theme 'dark 'solarized-dark)
-(provide-theme 'solarized-dark)
-(load-theme 'solarized-dark t)
+;(setq solarized-termcolor 256)
+;(deftheme solarized-dark "The dark variant of the Solarized colour theme")
+;(create-solarized-theme 'dark 'solarized-dark)
+;(provide-theme 'solarized-dark)
+;(load-theme 'solarized-dark t)
 
 
 
 
 ;; zenburn-theme by package
-;(load-theme 'zenburn t)
+(load-theme 'zenburn t)
 
 ;; sanityinc-solarized by package
 ;(load-theme 'sanityinc-solarized-dark t)
