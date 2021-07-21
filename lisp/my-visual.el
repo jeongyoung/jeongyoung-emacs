@@ -14,21 +14,21 @@
 ;       "DeepSkyBlue1" "MediumOrchid1" "cyan" "white"])
 
 
-(tool-bar-mode -1)
+;(tool-bar-mode -1)
+
+
+;; zenburn-theme by package
+(load-theme 'zenburn t)
+
 (setq default-frame-alist 
-      '((width . 100) (height . 55) 
-;	(font . "-apple-NanumGothicCoding-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-;	(font . "AppleGothic-14")
-;	(font . "NanumGothicCoding-14")
-;	(font . "MalgunGothic-14")
-;	(font . "-apple-Malgun_Gothic-medium-normal-normal-*-*-*-*-*-p-0-iso10646-1")
-;	(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-				(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+      '((width . 200) (height . 55) 
+					;	(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+					;				(font . "-apple-Bitstream_Vera_Sans_Mono-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+	(font . "-*-D2Coding-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 ;				(font . "NanumGothicCoding-14")
 				(scroll-bar-mode . 0)
 				(cursor-color . "red")
-				(cursor-type . "box")
-				(menu-bar-lines . 0)
+;				(cursor-type . "box")
 				))
 
 
@@ -81,11 +81,8 @@
 ;; (provide-theme 'solarized-dark)
 ;; (load-theme 'solarized-dark t)
 
-
-
-
 ;; zenburn-theme by package
-(load-theme 'zenburn t)
+
 
 ;; sanityinc-solarized by package
 ;(load-theme 'sanityinc-solarized-dark t)
@@ -105,12 +102,6 @@
 
 ;(setq default-frame-alist '((font . "NanumGothicCoding-14")))
 
-; (set-cursor-color 'red)
-; (set-cursor-color 'red)                                                       
-;(setq default-frame-alist                                                                ' ((cursor-color . "red") (cursor-type . box) (width . 60) (height . 55) ))  
-
 ;; 모드 라인에 Display time mode 활성화
 (display-time-mode t)
 (setq display-time-day-and-date t)
-
-
