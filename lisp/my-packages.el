@@ -5,7 +5,7 @@
 ; list the packages you want
 (setq my-package-list '
 					;			(autopair cider clojure-mode company ecb emacs-eclim ggtags highlight-parentheses jedi auto-complete epc ctable concurrent deferred magit git-rebase-mode git-commit-mode markdown-mode pkg-info epl pony-mode popup psvn virtualenvwrapper s dash w3m weblogger xml-rpc yasnippet zenburn-theme)
-      (company zenburn-theme)
+      (use-package)
 )
 
 ;;  패키지 저장소 Marmalade 추가

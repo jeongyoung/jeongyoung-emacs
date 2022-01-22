@@ -26,9 +26,11 @@
 
 ;; Customization
 
+(defun reload-dotemacs ()
+  "Reload .emacs.d/init.el"
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
 
-
-(load-library "my-reload-dotemacs")		;이맥스 설정파일 리로딩
 (load-library "my-packages")	; emacs package management,
 (load-library "my-hangul")		; hangul,ime,utf setting
 (load-library "my-visual")		; color,font...
@@ -43,7 +45,7 @@
 		
 ;(load-library "my-cedet")		; cedet setting	
 ;(load-library "my-ecb")			; ecb setting
-;(load-library "my-python")		; python-mode, ipython,pylookup settings
+(load-library "my-python")		; python-mode, ipython,pylookup settings
 ;(load-library "my-django")		; python-django
 
 ;(load-library "my-dict")		; eng-han dict
@@ -88,7 +90,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(org-bullets cider company)))
+ '(package-selected-packages '(zenburn-theme use-package (elpy) org-bullets cider)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

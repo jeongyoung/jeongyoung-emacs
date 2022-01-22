@@ -18,7 +18,10 @@
 
 
 ;; zenburn-theme by package
-(load-theme 'zenburn t)
+(use-package zenburn-theme
+  :ensure t
+  :config
+  (load-theme 'zenburn t))
 
 (setq default-frame-alist 
       '((width . 200) (height . 55) 
