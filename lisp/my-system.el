@@ -1,69 +1,54 @@
-;; (require 'emacs-type)
+;; helm
 
-;; (setq make-backup-files nil)		;do not make backup files
+(use-package helm
+  :ensure t)
+  ;; :init
+  ;; (require 'helm-config))
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-(custom-set-variables
- '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
- '(backup-directory-alist '((".*" . "~/.emacs.d/backups/"))))
+(setq helm-split-window-in-side-p t
+      helm-move-to-line-cycle-in-source t)
 
-;; create the autosave dir if necessary, since emacs won't.
-(make-directory "~/.emacs.d/autosaves/" t) 
+(helm-mode 1)
 
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 
+(global-set-key (kbd "C-x r b") 'helm-bookmarks)
 
-;; (let ((type (emacs-type)))
-;;   ;;mac
-;;   (cond ((eq type 'emacs-mac-window)
-	
-;; 	 ; mac에서 command 를 meta로 사용
-;; 	 (setq mac-command-modifier 'meta))
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
-;; 	)
-;;   ;;windows
-;;   (cond ((eq type 'emacs-window)
-;; 	 )
-;; 	)
-;; )
+(global-set-key (kbd "C-s") 'helm-occur)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 
 
-(setq default-directory "~/" )
+; wsl-copy
+(defun wsl-copy (start end)
+  (interactive "r")
+    (if (use-region-p)
+        (let ((text (buffer-substring-no-properties start end)))
+          (shell-command (concat "echo '" text "' | clip.exe")))))
 
-;; 프레임 전환을 메타키와 방향키로 가능하도록
-(windmove-default-keybindings 'meta)
 
-(setq exec-path (append exec-path '("/usr/local/bin")) )
+;;wsl-paste
+(defun wsl-paste ()
+  (interactive)
+  (let ((clipboard
+	 (shell-command-to-string "powershell.exe -command 'Get-Clipboard' 2> /dev/null")))
+    (setq clipboard (replace-regexp-in-string "\r" "" clipboard)) ; Remove windows ^M characters
+    (setq clipboard (substring clipboard 0 -1)) ; Remove newline added by Powershell
+    (insert clipboard)))
 
-(when (equal system-type 'darwin)
-  (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
-  (push "/opt/local/bin" exec-path))
-
-;; key bindings
-(when (eq system-type 'darwin) ;; mac specific settings
-  ;(setq mac-option-modifier 'alt)
-
-  (setq mac-command-modifier 'meta)
-
-  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-  )
-
-;; exec-path
-(when (equal system-type 'darwin)
-  (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
-  (push "/opt/local/bin" exec-path))
+(global-set-key (kbd "C-c C-c") 'wsl-copy)
+(global-set-key (kbd "C-c C-v") 'wsl-paste)
 
 
 
-(defun toggle-fullscreen ()
-	"Toggle full screen"
-	(interactive)
-	(set-frame-parameter
-	 nil 'fullscreen
-	 (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
 
-(global-set-key [(meta return)] 'toggle-fullscreen)
-	
-	
 
-	 

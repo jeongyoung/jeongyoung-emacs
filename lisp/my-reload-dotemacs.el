@@ -1,4 +1,6 @@
-(defun reload-dotemacs ()
+(defun reload-init-file ()
   "Reload .emacs.d/init.el"
   (interactive)
-  (load-file "~/.emacs.d/init.el"))
+  (load-file user-init-file))
+
+(global-set-key (kbd "C-c C-l") 'reload-init-file)

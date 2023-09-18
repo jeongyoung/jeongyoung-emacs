@@ -1,7 +1,0 @@
-export PATH=~/.emacs.d/bin:$PATH
-
-alias em="emacsclient -n"
-alias et="emacsclient -nw"
-alias ek="emacsclient -e '(kill-emacs)'"
-
-
