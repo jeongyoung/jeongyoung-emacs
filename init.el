@@ -402,8 +402,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   '("/home/jeongyoung/org/apache24.org" "/home/jeongyoung/org/desk.org" "/home/jeongyoung/org/dev.org" "/home/jeongyoung/org/ecp-db.org" "/home/jeongyoung/org/edu-devops.org" "/home/jeongyoung/org/emacs-python.org" "/home/jeongyoung/org/firewall.org" "/home/jeongyoung/org/git.org" "/home/jeongyoung/org/log4j.org" "/home/jeongyoung/org/netpion.org" "/home/jeongyoung/org/notes-org.org" "/home/jeongyoung/org/notes.org" "/home/jeongyoung/org/org-caldav-inbox.org" "/home/jeongyoung/org/server.org" "/home/jeongyoung/org/spring-boot.org" "/home/jeongyoung/org/todo.org" "/home/jeongyoung/org/리뉴얼app고려사항.org" "/home/jeongyoung/org/마이그레이션교육.org" "/home/jeongyoung/org/신규PC셋업.org" "/home/jeongyoung/org/운영제안.org"))
  '(package-selected-packages
    '(magit calfw-org org-caldav org-jira all-the-icons doom-themes yaml-mode flycheck yasnippet-snippets yasnippet helm-descbinds company-lsp helm-lsp dap-java company-emoji lsp-java hydra neotree calfw org-superstar org-bullets auto-complete company zenburn-theme use-package)))
 (custom-set-faces
