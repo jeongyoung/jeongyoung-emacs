@@ -253,7 +253,6 @@
 ;;   (company-emoji-init))
 
 
-(setenv "MAVEN_OPTS" "-Dhttp.proxyHost=11.71.210.210 -Dhttp.proxyPort=9090 -Dhttps.proxyHost=11.71.210.210 -Dhttps.proxyPort=9090 -Dhttp.nonProxyHosts=localhost|127.*|11.*|[::1]");
 
 (use-package lsp-java
   :ensure t
