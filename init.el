@@ -21,8 +21,20 @@
   (setq use-package-always-ensure t)
   (require 'use-package))
 
+;; install straight.el
 
-
+(defvar bootstrap-version)
+(let ((bootstrap-file
+      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+        'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 
 ;; reload init file
@@ -91,6 +103,20 @@
 (with-eval-after-load 'doom-themes
   (doom-themes-neotree-config))
 
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+
+(require 'use-package)
+
+(use-package neotree
+  :ensure t
+  :bind (("<f8>" . neotree-toggle))
+  :defer
+  :config
+  (setq neo-window-width 55))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; global
@@ -114,7 +140,7 @@
 ;; (define-key global-map [(control c)(control v)(d)] 'insert-personal-time-stamp)
 
 
-(setq default-tab-width 2)
+(setq default-tab-width 4)
 
 ;; Minibuffer and buffer navigation
 ;; (use-package counsel
@@ -127,60 +153,66 @@
 ;;   ("C-o"   . 'counsel-outline)
 ;;   ("C-x b" . 'counsel-switch-buffer))
 
+(use-package paredit
+  :init
+  (add-hook 'emacs-list-mode-hook #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode))
+
+(use-package rainbow-delimiters
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
 
 (use-package helm
-  :ensure t)
-  ;; :init
+  :ensure t
+  :init
+  (helm-mode 1)
+  (progn (setq helm-buffers-fuzzy-matching t))
+  :bind
+  (("C-c h" . helm-command-prefix))
+  (("M-x" . helm-M-x))
+  (("C-x C-f" . helm-find-files))
+  (("C-x b" . helm-buffers-list))
+  (("C-c b" . helm-bookmarks))
+  (("C-c f" . helm-recertf))
+  (("C-s" . helm-occur))
+  (("C-c g" . helm-grep-do-git-grep)))
+;; :init
   ;; (require 'helm-config))
 
 (setq helm-split-window-in-side-p t
       helm-move-to-line-cycle-in-source t)
 
-(helm-mode 1)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x r b") 'helm-bookmarks)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-s") 'helm-occur)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+;; (helm-mode 1)
+;; (global-set-key (kbd "C-x b") 'helm-buffers-list)
+;; (global-set-key (kbd "C-x r b") 'helm-bookmarks)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (global-set-key (kbd "C-s") 'helm-occur)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+
 
 (use-package helm-descbinds
 :ensure t
 :bind ("C-h b" . helm-descbinds))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; auto-complete
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (use-package auto-complete-config
-;;   :ensure auto-complete
-;;   :bind ("M-<tab>" . my--auto-complete)
-;;   :init
-;;   (defun my--auto-complete ()
-;;     (interactive)
-;;     (unless (boundp 'auto-complete-mode)
-;;       (global-auto-complete-mode 1))
-;;     (auto-complete))
-;;   )
+(electric-pair-mode 1)
 
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; lsp
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (use-package yasnippet
-;;   :ensure t
-;;   :init
-;;   (yas-global-mode 1)
-;;   :config
-;;   (use-package yasnippet-snippets
-;;     :ensure t)
-;;   (yas-reload-all))
-
-(use-package yasnippet :config (yas-global-mode))
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1)
+  :config
+  (use-package yasnippet-snippets
+    :ensure t)
+  (yas-reload-all))
 
 (use-package yaml-mode)
 
@@ -199,92 +231,32 @@
   :config
   (helm-projectile-on))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; lsp-java
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; lsp-mode 설치
 
 (use-package lsp-mode
-  :ensure t
-  :hook (
-	 (lsp-mode . lsp-enable-which-key-integration)
-	 (java-mode . #'lsp-deferred)
-	 )
-  :init (setq 
-	 lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
-	 lsp-enable-file-watchers nil
-	 read-process-output-max (* 1024 1024)  ; 1 mb
-	 lsp-completion-provider :capf
-	 lsp-idle-delay 0.500)
-  :config 
-  (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
-  (with-eval-after-load 'lsp-intelephense
-    (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
-  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
-
-
-(use-package hydra
-  :ensure t)
-
-
-(use-package lsp-ui
 :ensure t
-:after (lsp-mode)
-:bind (:map lsp-ui-mode-map
-         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-         ([remap xref-find-references] . lsp-ui-peek-find-references))
-:init (setq lsp-ui-doc-delay 0.0
-      lsp-ui-doc-position 'bottom
-	  lsp-ui-doc-max-width 100
-	  ))
-
-(use-package lsp-treemacs
-  :after lsp)
-
-
-(use-package company
-  :config
-  (global-set-key (kbd "<C-return>") 'company-complete)
-  (global-company-mode t)
-  (setq company-idle-delay 0.1)
-  (setq company-minimum-prefix-length 2)
-  )
-
-;; Get auto completion of :emoji: names.
-;; (use-package company-emoji
-;;   :after company-mode
-;;   :config
-;;   (company-emoji-init))
-
-
-
-(use-package lsp-java
-  :ensure t
-  :config
-  (setq lsp-java-vmargs
-        (list
-         "-noverify"
-         "-Xmx3G"
-         "-XX:+UseG1GC"
-         "-XX:+UseStringDeduplication"
-         "-Djava.awt.headless=true"
-;	 "-Dhttp.proxyHost=11.71.210.210 -Dhttp.proxyPort=9090"
-;	 "-Dhttps.proxyHost=11.71.210.210 -Dhttps.proxyPort=9090"
-;	 "-Dhttp.nonProxyHosts=localhost|127.*|11.*|[::1]"	 
-        ; "-cp"
-        ; ""
-        ; "-javaagent:/home/torstein/.m2/repository/org/projectlombok/lombok/1.18.4/lombok-1.18.4.jar" 
-         )
-
-        lsp-java-java-path "/home/jeongyoung/ecp/tools/zulu17.42.21-ca-crac-jdk17.0.7-linux_x64/bin/java"
-
-        ;; Don't organise imports on save
-        lsp-java-save-action-organize-imports nil
-
-        ;; Don't format my source code (I use Maven for enforcing my
-        ;; coding style)
-        lsp-java-format-enabled nil)
-  (add-hook 'java-mode-hook 'lsp))
-
-(require 'lsp-java-boot)
-(add-hook 'lsp-mode-hook #'lsp-lens-mode)
-(add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
+:hook (
+   (lsp-mode . lsp-enable-which-key-integration)
+   (java-mode . #'lsp-deferred)
+   (js-ts-mode . #'lsp-deferred)
+)
+:init (setq 
+    lsp-keymap-prefix "C-c l"              ; this is for which-key integration documentation, need to use lsp-mode-map
+    lsp-enable-file-watchers nil
+    read-process-output-max (* 1024 1024)  ; 1 mb
+    lsp-completion-provider :capf
+    lsp-idle-delay 0.500
+)
+:config 
+    (setq lsp-intelephense-multi-root nil) ; don't scan unnecessary projects
+    (with-eval-after-load 'lsp-intelephense
+    (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
+	(define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+	)
 
 (use-package helm-lsp
 :ensure t
@@ -292,32 +264,89 @@
 :commands (helm-lsp-workspace-symbol)
 :init (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
 
-
-;; DAP
-(use-package dap-mode
-  ;; Uncomment the config below if you xwant all UI panes to be hidden by default!
-  ;; :custom
-  ;; (lsp-enable-dap-auto-configure nil)
-  ;; :config
-  ;; (dap-ui-mode 1)
-  :commands dap-debug
-  :config
-  (require 'dap-chrome)
-
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  ;; (general-define-key
-  ;;   :keymaps 'lsp-mode-map
-  ;;   :prefix lsp-keymap-prefix
-  ;;   "d" '(dap-hydra t :wk "debugger")))
+;; lsp-ui, optional
+(use-package lsp-ui
+:ensure t
+:after (lsp-mode)
+:bind (:map lsp-ui-mode-map
+         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+         ([remap xref-find-references] . lsp-ui-peek-find-references))
+:init
+(setq lsp-ui-doc-delay 1.5
+	    lsp-ui-doc-position 'bottom
+	    lsp-ui-doc-max-width 100
+	    lsp-ui-doc-enable 1
+	    lsp-ui-doc-show-with-cursor 1
+	    )
+(setq lsp-ui-doc-frame-alist '((:foreground "white" :background "black"))) ; 예시: 흰색 글씨, 검은색 배경
 )
 
+(custom-set-faces
+ ;; 문서 배경색
+ '(lsp-ui-doc-background ((t (:background "#1e1e1e"))))
+ ;; 문서 텍스트
+ '(lsp-ui-doc-header ((t (:foreground "#ffffff" :background "#3a3f5a" :bold t))))
+ ;; 테두리 색
+ '(lsp-ui-doc-border ((t (:background "#5e81ac")))))
+
+
+;; company-mode, for completion
+(use-package company
+  :ensure t
+  :hook (after-init . global-company-mode))
+
+;; dap-mode, optional (디버깅용)
+(use-package dap-mode
+  :ensure t)
+
+(use-package lsp-java
+  :ensure t
+  :after lsp
+  :config
+  (add-hook 'java-mode-hook #'lsp))
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-position 'at-point  ;; or 'top, 'bottom, 'left, 'right
+        lsp-ui-doc-delay 0.3
+        lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-code-actions t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-delay 0.2))
+
+(use-package treemacs
+  :ensure t)
+
+(use-package lsp-treemacs
+  :ensure t
+  :after lsp
+  :commands lsp-treemacs-errors-list
+  :config
+  (lsp-treemacs-sync-mode 1))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+;; 선택 사항: 아이콘과 Git 상태 통합
+(use-package treemacs-all-the-icons
+  :after treemacs
+  :ensure t
+  :config
+  (treemacs-load-theme "all-the-icons"))
+
+(use-package java-snippets)
 
 (defun my-default-code-style-hook()
   (setq c-basic-offset 4
-        c-label-offset 0
-        tab-width 4
-        indent-tabs-mode nil
-        require-final-newline nil))
+	c-label-offset 0
+	tab-width 4
+	indent-tabs-mode nil
+	require-final-newline nil))
 (add-hook 'java-mode-hook 'my-default-code-style-hook)
 
 
@@ -373,7 +402,28 @@
 
 
 
+;; python using dsp-mode
+(use-package python-mode
+  :ensure t
+  :hook (python-mode . lsp-deferred)
+  :custom
+  (dap-python-debugger 'debugpy)
+  :config
+  (require 'dap-python))
 
+(add-hook 'python-mode #'yas-minor-mode)
+
+(use-package company-jedi)
+
+(setq company-backends '(company-capf
+			 company-jedi
+			 company-yasnippet))
+
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode t))
+		     
 (use-package magit
   :bind (("C-x g" . magit-status)
          ("C-x C-g" . magit-status)))
@@ -390,11 +440,46 @@
 ;(load-library "my-clojure")
 ;(load-library "my-projectile")
 (load-library "my-react")
-(load-library "my-neotree")
+;(load-library "my-neotree")
 (load-library "my-jira")
 
 
 
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure t)
+
+(add-hook 'prog-mode 'copilot-mode)
+
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+
+
+(straight-use-package 'gptel)
+
+(setq gptel-api-key (auth-source-pick-first-password
+                     :host "api.openai.com"
+                     :user "openai"))
+
+(use-package copilot-chat
+  :bind (:map global-map
+            ("C-c C-y" . copilot-chat-yank)
+            ("C-c M-y" . copilot-chat-yank-pop)
+            ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1))))  
+  )
+
+(setq major-mode-remap-alist
+      '((python-mode . python-ts-mode)
+        (js-mode . js-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (json-mode . json-ts-mode)
+        (css-mode . css-ts-mode)
+        (bash-mode . bash-ts-mode)
+        (conf-toml-mode . toml-ts-mode)))
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -402,7 +487,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit calfw-org org-caldav org-jira all-the-icons doom-themes yaml-mode flycheck yasnippet-snippets yasnippet helm-descbinds company-lsp helm-lsp dap-java company-emoji lsp-java hydra neotree calfw org-superstar org-bullets auto-complete company zenburn-theme use-package)))
+   '(rainbow-delimiters paredit pyvenv company-jedi python-mode doom-modeline magit calfw-org org-caldav org-jira all-the-icons doom-themes yaml-mode flycheck yasnippet-snippets yasnippet helm-descbinds company-lsp helm-lsp dap-java company-emoji lsp-java hydra neotree calfw org-superstar org-bullets auto-complete company zenburn-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
