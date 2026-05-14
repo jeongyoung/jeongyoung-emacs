@@ -1,26 +1,3 @@
-;; use-package 
-
-(require 'package)
-(package-initialize)
-(setq package-enable-at-startup nil)
-
-;;  패키지 저장소 Marmalade 추가
-;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("nongnu" . "https://elpa.nongnu.org/nongnu/"))
-      gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))    
-
-(eval-when-compile
-  (setq use-package-always-ensure t)
-  (require 'use-package))
-
 ;; install straight.el
 
 (defvar bootstrap-version)
@@ -36,6 +13,10 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+(setq use-package-always-ensure nil)
+(require 'use-package)
 
 ;; reload init file
 
@@ -47,20 +28,20 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; macOS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta
+        mac-option-modifier 'super))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hangul
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (set-default-coding-systems 'utf-8) ;; utf-8
 (setq default-input-method "korean-hangul")
-
-(if (eq system-type 'gnu/linux)
-    (progn
-      (set-fontset-font "fontset-default" 'korean-ksc5601 "-SAND-NanumGothicCoding-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
-      (setq initial-frame-alist '((top . 40) (left . 1000)))
-      (setq default-frame-alist '((width . 100) (height . 50)))))
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; visual
@@ -108,8 +89,6 @@
   :init (doom-modeline-mode 1))
 
 
-(require 'use-package)
-
 (use-package neotree
   :ensure t
   :bind (("<f8>" . neotree-toggle))
@@ -117,6 +96,14 @@
   :config
   (setq neo-window-width 55))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-revert
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-auto-revert-mode 1)
+(setq fast-but-imprecise-scrolling t)
+(setq scroll-conservatively 101)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; global
@@ -282,12 +269,13 @@
 )
 
 (custom-set-faces
- ;; 문서 배경색
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(lsp-ui-doc-background ((t (:background "#1e1e1e"))))
- ;; 문서 텍스트
- '(lsp-ui-doc-header ((t (:foreground "#ffffff" :background "#3a3f5a" :bold t))))
- ;; 테두리 색
- '(lsp-ui-doc-border ((t (:background "#5e81ac")))))
+ '(lsp-ui-doc-border ((t (:background "#5e81ac"))))
+ '(lsp-ui-doc-header ((t (:foreground "#ffffff" :background "#3a3f5a" :bold t)))))
 
 
 ;; company-mode, for completion
@@ -468,6 +456,17 @@
             ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1))))  
   )
 
+
+(use-package claude-code-ide
+  :straight (:host github :repo "manzaltu/claude-code-ide.el")
+  :bind ("C-c C-'" . claude-code-ide-menu)
+  :config
+  (claude-code-ide-emacs-tools-setup))
+
+
+(use-package vterm
+  :ensure t)
+
 (setq major-mode-remap-alist
       '((python-mode . python-ts-mode)
         (js-mode . js-ts-mode)
@@ -481,16 +480,4 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(rainbow-delimiters paredit pyvenv company-jedi python-mode doom-modeline magit calfw-org org-caldav org-jira all-the-icons doom-themes yaml-mode flycheck yasnippet-snippets yasnippet helm-descbinds company-lsp helm-lsp dap-java company-emoji lsp-java hydra neotree calfw org-superstar org-bullets auto-complete company zenburn-theme use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
