@@ -1,21 +1,64 @@
+;; 컴파일 시 경고 창이 뜨는 것을 방지 (백그라운드에서 조용히 작업)
+(setq native-comp-async-report-warnings-errors 'silent)
+
+;; 컴파일 속도 및 최적화 레벨 설정 (0~3, 3이 최대 최적화)
+(setq native-comp-speed 3)
+
+;; 설치된 패키지들도 자동으로 네이티브 컴파일 수행
+(setq package-native-compile t)
+
+
+;; 시작 시 GC 임계값을 높여서 로딩 속도 향상 (100MB)
+(setq gc-cons-threshold (* 100 1024 1024))
+
+;; 부팅 완료 후 다시 낮춤 (정상 작동 시 메모리 효율을 위해)
+(add-hook 'emacs-startup-hook
+          (lambda () (setq gc-cons-threshold (* 2 1024 1024))))
+
+;; 모든 버퍼에 대해 외부 변경 사항 자동 반영 (Global Auto Revert)
+(global-auto-revert-mode 1)
+
+;; use-package 
+
+(require 'package)
+(package-initialize)
+(setq package-enable-at-startup nil)
+
+;;  패키지 저장소 Marmalade 추가
+;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+      gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))    
+
+(eval-when-compile
+  (setq use-package-always-ensure t)
+  (require 'use-package))
+
 ;; install straight.el
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
-      (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7)) ; 최신 버전 확인 (2026년 기준 version 7이 안정적)
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
         (url-retrieve-synchronously
-        "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-        'silent 'inhibit-cookies)
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package)
-(setq straight-use-package-by-default t)
-(setq use-package-always-ensure nil)
 (require 'use-package)
 
 ;; reload init file
@@ -79,7 +122,11 @@
   (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  (set-face-foreground 'font-lock-comment-face "#b1b1b1")
+  ;; (set-face-foreground 'font-lock-comment-face "#9ca0a4")
+  )
+
 
 (with-eval-after-load 'doom-themes
   (doom-themes-neotree-config))
@@ -224,6 +271,17 @@
 
 ;; lsp-mode 설치
 
+
+(setq lsp-java-vmargs
+      '("-XX:+UseParallelGC"
+        "-XX:GCTimeRatio=4"
+        "-XX:AdaptiveSizePolicyWeight=90"
+        "-Dsun.zip.disableMemoryMapping=true"
+        "-Xmx2G"
+        "-Xms100m"
+        "-javaagent:/home/jeongyoung/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar"))
+
+
 (use-package lsp-mode
 :ensure t
 :hook (
@@ -287,24 +345,36 @@
 (use-package dap-mode
   :ensure t)
 
-(use-package lsp-java
+(use-package
+  lsp-java
   :ensure t
   :after lsp
+  :init
+  (setq lsp-java-autobuild-enabled t)
   :config
-  (add-hook 'java-mode-hook #'lsp))
+  (add-hook 'java-mode-hook #'lsp)
+  ;; Java 파일 저장 시 자동 컴파일 트리거
+  (add-hook 'java-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook
+                        (lambda ()
+                          (lsp-java-compile-compile-workspace))
+                        nil t)))
+  )
 
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (setq lsp-ui-doc-enable t
-        lsp-ui-doc-position 'at-point  ;; or 'top, 'bottom, 'left, 'right
-        lsp-ui-doc-delay 0.3
-        lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-code-actions t
-        lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-delay 0.2))
+
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode
+;;   :hook (lsp-mode . lsp-ui-mode)
+;;   :config
+;;   (setq lsp-ui-doc-enable t
+;;         lsp-ui-doc-position 'at-point  ;; or 'top, 'bottom, 'left, 'right
+;;         lsp-ui-doc-delay 0.3
+;;         lsp-ui-sideline-enable t
+;;         lsp-ui-sideline-show-code-actions t
+;;         lsp-ui-sideline-show-hover t
+;;         lsp-ui-sideline-delay 0.2))
 
 (use-package treemacs
   :ensure t)
@@ -432,28 +502,19 @@
 (load-library "my-jira")
 
 
+;(straight-use-package 'gptel)
 
-(use-package copilot
-  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
-  :ensure t)
-
-(add-hook 'prog-mode 'copilot-mode)
-
-(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-
-
-(straight-use-package 'gptel)
-
-(setq gptel-api-key (auth-source-pick-first-password
-                     :host "api.openai.com"
-                     :user "openai"))
-
-(use-package copilot-chat
-  :bind (:map global-map
-            ("C-c C-y" . copilot-chat-yank)
-            ("C-c M-y" . copilot-chat-yank-pop)
-            ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1))))  
+(use-package gptel
+  :straight t
+  :config
+  ;; Gemini 설정
+  (setq-default gptel-model 'gemini-2.5-flash)
+  (setq gptel-backend
+	(gptel-make-gemini "Gemini"
+	  :key (getenv "GPTEL_GEMINI_KEY")
+	  :stream t))
+  (setq gptel-default-system-prompt
+	"You are a helpful assistant. Please answer only in Korean.")  
   )
 
 
@@ -466,6 +527,37 @@
 
 (use-package vterm
   :ensure t)
+;; (use-package copilot
+;;   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+;;   :ensure t
+;;   :hook (prog-mode . copilot-mode) ; 프로그래밍모드에서 자동 활성화
+;;   :bind (:map copilot-completion-map
+;; 	      ("<tab>" . copilot-accept-completion)
+;; 	      ("TAB" . copilot-accept-completion)
+;; 	      ("M-f" . copilot-accept-completion-by-word) ; 단어단위수락
+;; 	      ("M-n" . copilot-next-completion) ; 다음 제안
+;; 	      ("M-p" . copilot-previous-completion) ; 이전 제안
+;; 	      )
+;;   :config
+;;   (setq copilot-idle-delay 0.1)
+;;   ;; Company 등 다른 완성 도구와 충돌 방지
+;;   (with-eval-after-load 'company
+;;     (delq 'company-preview-if-just-one-frontend company-frontends)))
+
+
+;; (use-package copilot-chat
+;;   :bind (:map global-map
+;;             ("C-c C-y" . copilot-chat-yank)
+;;             ("C-c M-y" . copilot-chat-yank-pop)
+;;             ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1))))  
+;;   )
+
+(use-package claude-code-ide
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
+  :config
+  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
+
 
 (setq major-mode-remap-alist
       '((python-mode . python-ts-mode)
@@ -480,4 +572,21 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packagesx
+   '(rainbow-delimiters paredit pyvenv company-jedi python-mode
+			doom-modeline magit calfw-org org-caldav
+			org-jira all-the-icons doom-themes yaml-mode
+			flycheck yasnippet-snippets yasnippet
+			helm-descbinds company-lsp helm-lsp dap-java
+			company-emoji lsp-java hydra neotree calfw
+			org-superstar org-bullets auto-complete
+			company zenburn-theme use-package))
+ '(package-vc-selected-packages
+   '((claude-code-ide :url
+		      "https://github.com/manzaltu/claude-code-ide.el"))))
 
