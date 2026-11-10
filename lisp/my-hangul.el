@@ -13,6 +13,6 @@
 (if (eq system-type 'gnu/linux)
     (progn
       (set-fontset-font "fontset-default" 'korean-ksc5601 "-SAND-NanumGothicCoding-normal-normal-normal-*-*-*-*-*-d-0-iso10646-1")
-      (setq initial-frame-alist '((top . 40) (left . 1000)))
+      (setq initial-frame-alist '((top . 10)))
       (setq default-frame-alist '((width . 100) (height . 50)))))
 

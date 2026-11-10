@@ -1,5 +1,4 @@
-
-
+;; my-react.el --- description -*- lexical-binding: t; -*-
 
 (use-package which-key
   :ensure t
@@ -36,33 +35,6 @@
   :commands web-mode)
 
 
-;; ;; lsp-mode
-
-
-(setq lsp-log-io nil) ;; Don't log everything = speed
-(setq lsp-keymap-prefix "C-c l")
-(setq lsp-restart 'auto-restart)
-(setq lsp-ui-sideline-show-diagnostics t)
-(setq lsp-ui-sideline-show-hover t)
-(setq lsp-ui-sideline-show-code-actions t)
-
-(use-package lsp-mode
-  :ensure t
-  :hook (
-	 (web-mode . lsp-deferred)
-	 (lsp-mode . lsp-enable-which-key-integration)
-	 )
-  :commands lsp-deferred)
-
-
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
-
-(use-package lsp-treemacs
-  :after lsp)
-
-
 (use-package prettier-js
   :ensure t)
 (add-hook 'web-mode-hook #'(lambda ()
@@ -71,24 +43,6 @@
 			     (enable-minor-mode
                               '("\\.tsx?\\'" . prettier-js-mode))))
 
-
-
-
-
-;; DAP
-(use-package dap-mode
-  ;; Uncomment the config below if you xwant all UI panes to be hidden by default!
-  ;; :custom
-  ;; (lsp-enable-dap-auto-configure nil)
-  ;; :config
-  ;; (dap-ui-mode 1)
-  :commands dap-debug
-  :config
-  (require 'dap-chrome)
-
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  ;; (general-define-key
-  ;;   :keymaps 'lsp-mode-map
-  ;;   :prefix lsp-keymap-prefix
-  ;;   "d" '(dap-hydra t :wk "debugger")))
-)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))

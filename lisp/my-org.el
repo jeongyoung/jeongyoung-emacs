@@ -1,166 +1,66 @@
-;;
-;; org-mode
-;;
+;; my-org.el --- description -*- lexical-binding: t; -*-
+
+
 ;; install from macport 
 
 (use-package org
-;  :ensure org-plus-contrib  
-  :ensure t
+  :ensure nil ; 내장버전을 사용
+  :defer t
   :mode (("\\.org$" . org-mode))
   :bind
-  ("C-c a" . org-agenda)
+;;  ("C-c a" . org-agenda)
   ("C-c c" . org-capture)
-;  ("C-c l" . org-store-link)
+  ("C-c l" . org-store-link)
   ("C-c b" . org-switchb)
-  :config
-  (setq org-directory "~/org")
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (setq org-ellipsis "⤵")
-  (setq org-log-done 'time)
-  (setq org-agenda-files (list "~/org/todo.org"))
-  (setq org-adapt-indentation t)
-  (setq org-agenda-directory "~/org")
-  (setq org-agenda-files (directory-files (expand-file-name org-agenda-directory) t "^.*\\.org$"))
-;  (require 'ox-confluence)
-  )
+  :init
+  (setq org-directory (expand-file-name "org" (getenv "HOME"))
+        org-default-notes-file (expand-file-name "notes.org" org-directory)
+        org-archive-location (expand-file-name "archive/%s_archive::" org-directory)
+        org-ellipsis "⤵"
+        org-log-done 'time
+        org-adapt-indentation t
+        org-agenda-directory org-directory
+        org-agenda-files
+        (when (file-directory-p org-agenda-directory)
+          (directory-files org-agenda-directory t "\\.org\\'"))))
 
+(add-to-list 'auto-mode-alist '("\\.org_archive\\'" . org-mode))
 
-;; (setq org-agenda-directory "~/Dropbox/Org")
-;; (setq org-agenda-files
-;;       (directory-files (expand-file-name org-agenda-directory) t "^.*\\.org$"))
+(defun my-org-insert-file-metadata ()
+  "Expand the metadata snippet when visiting a new, empty Org file."
+  (when (and buffer-file-name
+             (derived-mode-p 'org-mode)
+             (string-match-p "\\.org\\'" buffer-file-name)
+             (not (file-exists-p buffer-file-name))
+             (zerop (buffer-size)))
+    (require 'yasnippet)
+    (yas-minor-mode 1)
+    (yas-expand-snippet (yas-lookup-snippet "Org file metadata" 'org-mode))))
 
+(add-hook 'find-file-hook #'my-org-insert-file-metadata)
 
-(use-package org-bullets
-  :ensure t
-  ;;:hook (org-mode . org-bullets-mode))
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(setq org-capture-templates
+      '(("t" "Task" entry (file+headline "~/org/tasks.org" "Tasks")
+         "* TASK %?\n  DUE TO: %^t\n  %i")
+	
+		("p" "Todo" entry (file+headline "~/org/todo.org" "Todos")
+         "* TODO %?\n  DUE TO: %^t\n  %i")
+	
+        ("i" "Idea" entry (file+headline "~/org/ideas.org" "Ideas")
+         "* %? :IDEA:\n  %U\n  %i")
+
+        ("n" "Note" entry (file+headline "~/org/notes.org" "Notes")
+         "* %? :NOTE:\n  %U\n  %i")        
+	
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\n  Created: %U\n  %i")))
+
 
 (use-package org-superstar
   :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
+  :hook (org-mode . org-superstar-mode))
 
 
-;; (use-package org-caldav
-;;   :init
-;;   (defun org-caldav-sync-at-close ()
-;;     (org-caldav-sync)
-;;     (save-some-buffers))
-;;   (setq org-caldav-url "http://11.71.33.65:8090/dav.php/calendars/jeongyoung")
-;;   (setq org-icalendar-include-todo t
-;; 	org-caldav-sync-todo t)
-;;   (setq org-caldav-calendars
-;; 	'((:calendar-id "default"
-;; 			:files ("~/org/desk.org")
-;; 			:inbox "~/org/org-caldav-inbox.org")))
-;;   (setq org-caldav-backup-file "~/org/org-caldav-backup.org")
-;;   (setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo todo-due))
-;;   (setq org-icalendar-use-scheduled '(todo-start event-if-todo event-if-not-todo))
-;;   ;(add-hook 'kill-emacs-hook 'org-caldav-sync-at-close)
-;;   )
 
-;; caldav로부터 상세 description 은 제외되도록 처리
-;; (defun org-caldav--insert-description (description)
-;;   (when (< (length description) 0)
-;;     (when org-caldav-description-blank-line-before (newline))
-;;     (let ((beg (point)))
-;;       (insert description)
-;;       (org-indent-region beg (point)))
-;;     (when org-caldav-description-blank-line-after (newline))
-;;     (newline)))
-
-(use-package calfw
-  :ensure t
-  :bind ("C-c f" . cfw:open-org-calendar)
-  :config
-  (use-package calfw-org :ensure t)
-  (setq cfw:org-overwrite-default-keybinding t
-	cfw:display-calendar-holidays nil
-	calendar-week-start-day 1))
-
-
-;; (setq org-mobile-directory "~/Dropbox/MobileOrg")
-
-
-;; ;(setq org-refile-targets (quote (("newgtd.org" :maxlevel . 1) ("someday.org" :level . 2))))
-
-
-;; ;; (setq org-combined-agenda-icalendar-file
-;; ;;       "~/Library/Calendars/OrgMode.ics")
-;; ;; (add-hook 'org-after-save-iCalendar-file-hook
-;; ;; 	  (lambda ()
-;; ;; 	    (shell-command
-;; ;; 	     "osascript -e 'tell application \"iCal\" to reload calendars'")))
-
-
-;; ;;
-;; ;; remember-mode 
-;; ;;
-;; (org-remember-insinuate)
-
-
-;; (setq org-remember-templates
-;;       '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U"
-;; 	 "~/Dropbox/Org/newgtd.org" "Tasks"))
-;; )
-
-;; ;; (setq org-agenda-custom-commands
-;; ;;       '(
-
-;; ;; 	("P" "Projects"
-;; ;; 	 ((tags "PROJECT")))
-
-;; ;; 	("H" "Office and Home Lists"
-;; ;; 	 ((agenda)
-;; ;; 	  (tags - todo "OFFICE")
-;; ;; 	  (tags - todo "HOME")
-;; ;; 	  (tags - todo "COMPUTER")
-;; ;; 	  (tags - todo "DVD")
-;; ;; 	  (tags - todo "READING")))
-
-;; ;; 	("D" "Daily Action List"
-;; ;; 	 (
-;; ;; 	  (agenda "" ((org-agenda-ndays 1)
-;; ;; 		      (org-agenda-sorting-strategy
-;; ;; 		       (quote ((agenda time-up priority-down tag-up) )))
-;; ;; 		      (org-deadline-warning-days 0)
-;; ;; 		      ))))
-
-
-;; ;; 	)
-;; ;;       )
-
-;; (defun gtd ()
-;;   (interactive)
-;;   (find-file "~/Dropbox/Org/newgtd.org"))
-;; (global-set-key (kbd "C-c g") 'gtd)
-
-;; (custom-set-variables
-;;  '(org-hide ((((background dark)) (:foreground "darkslateg"))))
-;; )
-
-;; ;; org-toodledo
-
-;; ;; set this variables in ~/.emacs.private/...
-;; ;; (setq org-toodledo-userid "")    
-;; ;; (setq org-toodledo-password "")
-
-
-;; (require 'org-toodledo)
-
-;; ;; Useful key bindings for org-mode
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (local-unset-key "\C-o")
-;;             (local-set-key "\C-od" 'org-toodledo-mark-task-deleted)
-;;             (local-set-key "\C-os" 'org-toodledo-sync)
-;;             )
-;;           )
-;; (add-hook 'org-agenda-mode-hook
-;;           (lambda ()
-;;             (local-unset-key "\C-o")
-;;             (local-set-key "\C-od" 'org-toodledo-agenda-mark-task-deleted)
-;;             )
-;; 	  )	
-
+(provide 'my-org)
+;;; my-org.el ends here

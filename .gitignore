@@ -22,3 +22,21 @@ abbrev_defs
 .DS_Store
 TAGS
 url/chookies
+
+# 로컬 캐시/상태 파일
+eln-cache/
+auto-save-list/
+.cache/
+transient/
+request/
+tree-sitter/
+straight/
+workspace/
+eclipse.jdt.ls/
+projectile-bookmarks.eld
+projects
+.lsp-session-v1
+.dap-breakpoints
+# 백업/압축 파일 (비밀번호 등이 포함될 수 있음)
+*.bak-*
+*.tar.gz
